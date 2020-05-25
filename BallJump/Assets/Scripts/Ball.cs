@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
 
 	public float moveSpeed;
+    public float yForce;
 
     // Start is called before the first frame update
     void Start()
@@ -29,5 +30,8 @@ public class Ball : MonoBehaviour
     void OnCollisionEnter2D()
     {
     	GameControl.instance.BallScored();
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(0, yForce));
     }
 }
