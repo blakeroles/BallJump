@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
 
 	public float moveSpeed;
     public float yForce;
+    public float xMobileTapForce;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,22 @@ public class Ball : MonoBehaviour
     		float h = Input.GetAxis("Horizontal") * moveSpeed;
 
         	GetComponent<Rigidbody2D>().AddForce(Vector2.right * h);
+            #if UNITY_ANDROID
+                if (Input.touchCount > 0)
+                {
+                    Touch touch = Input.GetTouch(0);
+
+                    if (touch.position.x < Screen.width/2)
+                    {
+                        GetComponent<Rigidbody2D>().AddForce(new Vector2(-xMobileTapForce, 0));
+                    }
+                    else if (touch.position.x > Screen.width/2)
+                    {
+                        GetComponent<Rigidbody2D>().AddForce(new Vector2(xMobileTapForce, 0));
+                    }
+                }
+            #endif
+
 
     	}
 
