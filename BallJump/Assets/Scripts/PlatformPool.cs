@@ -13,7 +13,7 @@ public class PlatformPool : MonoBehaviour
 
 
 	private GameObject[] platforms;
-	private Vector2 objectPoolPosition = new Vector2(-15f, -5f);
+	private Vector2 objectPoolPosition = new Vector2(-50f, -5f);
 	private float timeSinceLastSpawned;
 	private int currentPlatform = 0;
 	private float[] initialPlatformXPositions = {0.0f, -1.36f, -2.66f, -1.25f, 0.41f, 2.13f, 1.3f, 0.2f};

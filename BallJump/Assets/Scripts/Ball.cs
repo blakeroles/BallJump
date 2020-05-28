@@ -7,7 +7,9 @@ public class Ball : MonoBehaviour
 
 	public float moveSpeed;
     public float yForce;
-    public float xMobileTapForce;
+    public float xMobileTapForce = 5f;
+
+    private List<float> hitPlatformYs = new List<float>();
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +26,10 @@ public class Ball : MonoBehaviour
 
         	GetComponent<Rigidbody2D>().AddForce(Vector2.right * h);
             #if UNITY_ANDROID
+                
                 if (Input.touchCount > 0)
                 {
+
                     Touch touch = Input.GetTouch(0);
 
                     if (touch.position.x < Screen.width/2)
@@ -44,9 +48,22 @@ public class Ball : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D()
+    void OnCollisionEnter2D(Collision2D col)
     {
-    	GameControl.instance.BallScored();
+        bool beenHit = false;
+        foreach (float y in hitPlatformYs)
+        {
+            if (y == col.gameObject.transform.position.y)
+            {
+                beenHit = true;
+            }
+        }
+
+        if (!beenHit)
+        {
+            hitPlatformYs.Add(col.gameObject.transform.position.y);
+            GameControl.instance.BallScored();
+        }
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0, yForce));

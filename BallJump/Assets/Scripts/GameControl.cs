@@ -32,9 +32,10 @@ public class GameControl : MonoBehaviour
     {
         if (gameOver && Input.GetMouseButtonDown(0))
         {
-        	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        	SceneManager.LoadScene("TitleScene");
         }
     }
+
 
     public void BallDied()
     {
