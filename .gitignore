@@ -2,3 +2,5 @@
 /BallJump/Logs/*
 /BallJump/Temp/*
 /BallJump/obj/*
+/BallJump/*.apk
+/BallJump/*.aab
