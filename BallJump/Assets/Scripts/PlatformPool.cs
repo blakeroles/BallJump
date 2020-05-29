@@ -5,19 +5,20 @@ using UnityEngine;
 public class PlatformPool : MonoBehaviour
 {
 
-	public int platformPoolSize = 15;
+	public int platformPoolSize;
 	public GameObject platformPrefab;
-	public float spawnRate = 2f;
-	public float gapBetweenPlatforms = 2f;
+	public float spawnRate;
+	public float gapBetweenPlatforms;
 	public GameObject player;
+    public int numberOfPlatformsToSpawn;
 
 
 	private GameObject[] platforms;
-	private Vector2 objectPoolPosition = new Vector2(-50f, -5f);
+	private Vector2 objectPoolPosition = new Vector2(-50f, -4.64f);
 	private float timeSinceLastSpawned;
 	private int currentPlatform = 0;
-	private float[] initialPlatformXPositions = {0.0f, -1.36f, -2.66f, -1.25f, 0.41f, 2.13f, 1.3f, 0.2f};
-	private float[] initialPlatformYPositions = {-4.64f, -3.49f, -2.37f, -0.85f, 0.47f, 1.6f, 3.0f, 4.5f};
+	private float initialPlatformXPosition = 0.0f;
+	private float initialPlatformYPosition = -4.64f;
 	private float lastPlatformHeight;
     private float platformMin;
     private float platformMax;
@@ -26,30 +27,41 @@ public class PlatformPool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        platforms = new GameObject[platformPoolSize];
-        int j = 0;
-        for (int i = 0; i < platformPoolSize; i++)
-        {
-        	
-        	if (i >= platformPoolSize - initialPlatformXPositions.Length)
-        	{
-        		platforms[i] = (GameObject) Instantiate(platformPrefab, new Vector2(initialPlatformXPositions[j], initialPlatformYPositions[j]), Quaternion.identity);
-        		j++;
-        	}
-        	else
-        	{
-        		platforms[i] = (GameObject) Instantiate(platformPrefab, objectPoolPosition, Quaternion.identity);
-        	}
-
-        	lastPlatformHeight = platforms[i].transform.position.y;
-        }
 
         Camera cam = Camera.main;
         float height = 2f * cam.orthographicSize;
         float width = height * cam.aspect;
 
+        platforms = new GameObject[platformPoolSize];
         platformMin = -1f * width/2;
         platformMax = 1f * width/2;
+
+        for (int i = 0; i < platformPoolSize; i++)
+        {
+
+            if (i == platformPoolSize - 1)
+            {
+                platforms[i] = (GameObject) Instantiate(platformPrefab, new Vector2(initialPlatformXPosition, initialPlatformYPosition), Quaternion.identity);
+            } 
+            else if (i >= platformPoolSize - numberOfPlatformsToSpawn)
+            {
+                platforms[i] = (GameObject) Instantiate(platformPrefab, new Vector2(Random.Range(platformMin, platformMax), lastPlatformHeight + gapBetweenPlatforms), Quaternion.identity);
+            }
+            else
+            {
+                platforms[i] = (GameObject) Instantiate(platformPrefab, objectPoolPosition, Quaternion.identity);
+            }
+
+        	lastPlatformHeight = platforms[i].transform.position.y;
+
+        }
+
+
+        lastPlatformHeight = platforms[platformPoolSize - 2].transform.position.y;
+
+
+
+
     }
 
     // Update is called once per frame
