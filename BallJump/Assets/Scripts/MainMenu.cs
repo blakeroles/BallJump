@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
 	public void PlayGame()
 	{
+		SoundManagerScript.PlaySound("tap");
 		SceneManager.LoadScene("MainScene");
 	}
 

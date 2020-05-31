@@ -50,6 +50,7 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        SoundManagerScript.PlaySound("collision");
         bool beenHit = false;
         foreach (float y in hitPlatformYs)
         {
@@ -61,6 +62,7 @@ public class Ball : MonoBehaviour
 
         if (!beenHit)
         {
+
             hitPlatformYs.Add(col.gameObject.transform.position.y);
             GameControl.instance.BallScored();
         }
