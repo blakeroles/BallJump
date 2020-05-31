@@ -10,9 +10,11 @@ public class GameControl : MonoBehaviour
 	public static GameControl instance;
 	public GameObject gameOverText;
 	public Text scoreText;
+	public Text highScoreText;
 	public bool gameOver = false;
 
 	private int score = 0;
+	private int highScore;
 
     // Start is called before the first frame update
     void Awake()
@@ -25,6 +27,14 @@ public class GameControl : MonoBehaviour
         {
         	Destroy(gameObject);
         }
+    }
+
+    void Start()
+    {
+    	if (PlayerPrefs.HasKey("HighScore"))
+    	{
+    		highScore = PlayerPrefs.GetInt("HighScore");
+    	}
     }
 
     // Update is called once per frame
@@ -53,6 +63,17 @@ public class GameControl : MonoBehaviour
     	}
     	score++;
     	scoreText.text = "Score: " + score.ToString(); 
+
+    	UpdateHighScore();
     	
+    }
+
+    public void UpdateHighScore()
+    {
+    	if (score > highScore)
+    	{
+    		highScore = score;
+    		PlayerPrefs.SetInt("HighScore", highScore);
+    	}
     }
 }
