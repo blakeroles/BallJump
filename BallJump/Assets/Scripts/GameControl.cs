@@ -42,7 +42,11 @@ public class GameControl : MonoBehaviour
     {
         if (gameOver && Input.GetMouseButtonDown(0))
         {
-        	SoundManagerScript.PlaySound("tap");
+        	if (OptionsMenu.soundIsOn)
+        	{
+        		SoundManagerScript.PlaySound("tap");
+        	}
+        	
         	SceneManager.LoadScene("TitleScene");
         }
     }
@@ -50,7 +54,11 @@ public class GameControl : MonoBehaviour
 
     public void BallDied()
     {
-    	SoundManagerScript.PlaySound("game_over");
+    	if (OptionsMenu.soundIsOn)
+    	{
+    		SoundManagerScript.PlaySound("game_over");
+    	}
+    	
     	gameOverText.SetActive(true);
     	gameOver = true;
     }

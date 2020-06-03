@@ -50,7 +50,10 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        SoundManagerScript.PlaySound("collision");
+        if (OptionsMenu.soundIsOn)
+        {
+            SoundManagerScript.PlaySound("collision");
+        }
         bool beenHit = false;
         foreach (float y in hitPlatformYs)
         {

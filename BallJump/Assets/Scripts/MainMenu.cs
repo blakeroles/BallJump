@@ -21,8 +21,14 @@ public class MainMenu : MonoBehaviour
 
 	public void PlayGame()
 	{
-		SoundManagerScript.PlaySound("tap");
+		if (OptionsMenu.soundIsOn)
+		{
+			SoundManagerScript.PlaySound("tap");
+		}
+		
 		SceneManager.LoadScene("MainScene");
 	}
+
+
 
 }
