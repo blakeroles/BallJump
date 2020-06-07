@@ -94,7 +94,7 @@ public class PlatformPool : MonoBehaviour
 
         if (GameControl.instance.gameOver == false && player.transform.position.y < minPlatformHeight)
         {
-        	GameControl.instance.BallDied();
+        	GameControl.instance.PlayerDied();
         }
 
 

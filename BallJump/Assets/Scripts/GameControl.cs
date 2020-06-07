@@ -52,7 +52,7 @@ public class GameControl : MonoBehaviour
     }
 
 
-    public void BallDied()
+    public void PlayerDied()
     {
     	if (OptionsMenu.soundIsOn)
     	{
@@ -63,7 +63,7 @@ public class GameControl : MonoBehaviour
     	gameOver = true;
     }
 
-    public void BallScored()
+    public void PlayerScored()
     {
     	if (gameOver)
     	{

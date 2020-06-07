@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
 	public float moveSpeed;
     public float yForce;
     public float xMobileTapForce = 5f;
+    public GameObject player;
 
     private List<float> hitPlatformYs = new List<float>();
 
@@ -25,6 +26,7 @@ public class Ball : MonoBehaviour
     		float h = Input.GetAxis("Horizontal") * moveSpeed;
 
         	GetComponent<Rigidbody2D>().AddForce(Vector2.right * h);
+
             #if UNITY_ANDROID
                 
                 if (Input.touchCount > 0)
@@ -67,7 +69,7 @@ public class Ball : MonoBehaviour
         {
 
             hitPlatformYs.Add(col.gameObject.transform.position.y);
-            GameControl.instance.BallScored();
+            GameControl.instance.PlayerScored();
         }
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
