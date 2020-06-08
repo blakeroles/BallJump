@@ -82,20 +82,7 @@ public class PlatformPool : MonoBehaviour
         	}
         }
 
-        // if the player is below the lowest platform, trigerr ball died event
-        float minPlatformHeight = 100f;
-        for (int i = 0; i < platformPoolSize; i++)
-        {
-        	if (platforms[i].transform.position.y < minPlatformHeight)
-        	{
-        		minPlatformHeight = platforms[i].transform.position.y;
-        	}
-        }
 
-        if (GameControl.instance.gameOver == false && player.transform.position.y < minPlatformHeight)
-        {
-        	GameControl.instance.PlayerDied();
-        }
 
 
     }

@@ -8,14 +8,16 @@ public class Ball : MonoBehaviour
 	public float moveSpeed;
     public float yForce;
     public float xMobileTapForce = 5f;
-    public GameObject player;
+    public GameObject cam;
 
     private List<float> hitPlatformYs = new List<float>();
+    private float camHeight;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Camera camSize = Camera.main;
+        camHeight = 2f * camSize.orthographicSize;
     }
 
     // Update is called once per frame
@@ -45,6 +47,10 @@ public class Ball : MonoBehaviour
                 }
             #endif
 
+            if (transform.position.y < cam.transform.position.y - 0.5f * camHeight)
+            {
+                GameControl.instance.PlayerDied();
+            }
 
     	}
 
