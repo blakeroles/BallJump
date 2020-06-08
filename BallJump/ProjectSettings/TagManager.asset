@@ -54,3 +54,6 @@ TagManager:
   - name: ForeGround
     uniqueID: 2940636415
     locked: 0
+  - name: PlayerLayer
+    uniqueID: 2116378173
+    locked: 0

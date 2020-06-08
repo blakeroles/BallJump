@@ -542,8 +542,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1354330881
-  m_SortingLayer: 4
+  m_SortingLayerID: 2116378173
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -2235081930013613106, guid: 1d04e4dc397f340c983fd3c8b9373526,
     type: 3}
@@ -2158,10 +2158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae428e05e7574c3e9b8b21177009aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformPoolSize: 40
-  platformPrefab: {fileID: 272331436519569161, guid: 5c1d28e4fa69546cd991f0071d8445fa,
+  platformPoolSize: 60
+  platformPrefab: {fileID: 5930416370963680898, guid: 29adf185522af41f9972a273e1cdb512,
     type: 3}
-  spawnRate: 1
+  spawnRate: 0.65
   gapBetweenPlatforms: 2
   player: {fileID: 629376049}
   numberOfPlatformsToSpawn: 8
