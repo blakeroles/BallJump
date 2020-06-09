@@ -40,15 +40,7 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameOver && Input.GetMouseButtonDown(0))
-        {
-        	if (OptionsMenu.soundIsOn)
-        	{
-        		SoundManagerScript.PlaySound("tap");
-        	}
-        	
-        	SceneManager.LoadScene("TitleScene");
-        }
+
     }
 
 

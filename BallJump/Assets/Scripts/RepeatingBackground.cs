@@ -27,7 +27,8 @@ public class RepeatingBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+    	Debug.Log("Cam y position: " + cam.transform.position.y);
+    	Debug.Log("verticalLength: " + verticalLength.ToString());
 
         if ((cam.transform.position.y - 0.5f * camHeight) > verticalLength)
         {

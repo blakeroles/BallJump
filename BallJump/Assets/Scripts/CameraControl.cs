@@ -6,15 +6,15 @@ public class CameraControl : MonoBehaviour
 {
 
 	public Transform target;
-	public GameObject backgroundImage1;
-	public GameObject gatesImage1;
-	public GameObject rocksImage1;
-	public GameObject bigRocksImage1;
-	public GameObject backgroundImage2;
-	public GameObject gatesImage2;
-	public GameObject rocksImage2;
-	public GameObject bigRocksImage2;
-	public Camera mainCam;
+	public GameObject backgroundImage1 = null;
+	public GameObject gatesImage1 = null;
+	public GameObject rocksImage1 = null;
+	public GameObject bigRocksImage1 = null;
+	public GameObject backgroundImage2 = null;
+	public GameObject gatesImage2 = null;
+	public GameObject rocksImage2 = null;
+	public GameObject bigRocksImage2 = null;
+	public Camera mainCam = null;
 	public bool trackingTarget = true;
 
 	private float lastYPosition;

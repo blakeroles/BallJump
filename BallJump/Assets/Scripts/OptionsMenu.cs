@@ -43,6 +43,7 @@ public class OptionsMenu : MonoBehaviour
 		{
 			soundIsOn = true;
 			toggleSoundButtonText.text = "Sound Off";
+			SoundManagerScript.PlaySound("tap");
 		}
 	}
 }
