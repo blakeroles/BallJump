@@ -12,6 +12,8 @@ public class GameControl : MonoBehaviour
 	public Text scoreText;
 	public Text highScoreText;
 	public bool gameOver = false;
+	public float screenMin;
+	public float screenMax;
 
 	private int score = 0;
 	private int highScore;
@@ -35,6 +37,13 @@ public class GameControl : MonoBehaviour
     	{
     		highScore = PlayerPrefs.GetInt("HighScore");
     	}
+
+    	Camera cam = Camera.main;
+        float height = 2f * cam.orthographicSize;
+        float width = height * cam.aspect;
+
+        screenMin = -1f * width / 2;
+        screenMax = 1f * width / 2;
     }
 
     // Update is called once per frame

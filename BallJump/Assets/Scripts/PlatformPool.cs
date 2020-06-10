@@ -20,21 +20,13 @@ public class PlatformPool : MonoBehaviour
 	private float initialPlatformXPosition = 0.0f;
 	private float initialPlatformYPosition = -4.64f;
 	private float lastPlatformHeight;
-    private float platformMin;
-    private float platformMax;
 
 
     // Start is called before the first frame update
     void Start()
     {
 
-        Camera cam = Camera.main;
-        float height = 2f * cam.orthographicSize;
-        float width = height * cam.aspect;
-
         platforms = new GameObject[platformPoolSize];
-        platformMin = -1f * width/2;
-        platformMax = 1f * width/2;
 
         for (int i = 0; i < platformPoolSize; i++)
         {
@@ -45,7 +37,7 @@ public class PlatformPool : MonoBehaviour
             } 
             else if (i >= platformPoolSize - numberOfPlatformsToSpawn)
             {
-                platforms[i] = (GameObject) Instantiate(platformPrefab, new Vector2(Random.Range(platformMin, platformMax), lastPlatformHeight + gapBetweenPlatforms), Quaternion.identity);
+                platforms[i] = (GameObject) Instantiate(platformPrefab, new Vector2(Random.Range(GameControl.instance.screenMin, GameControl.instance.screenMax), lastPlatformHeight + gapBetweenPlatforms), Quaternion.identity);
             }
             else
             {
@@ -71,7 +63,7 @@ public class PlatformPool : MonoBehaviour
         if (GameControl.instance.gameOver == false && timeSinceLastSpawned >= spawnRate)
         {
         	timeSinceLastSpawned = 0;
-        	float spawnXPosition = Random.Range(platformMin, platformMax);
+        	float spawnXPosition = Random.Range(GameControl.instance.screenMin, GameControl.instance.screenMax);
         	float spawnYPosition = lastPlatformHeight + gapBetweenPlatforms;
         	platforms[currentPlatform].transform.position = new Vector2(spawnXPosition, spawnYPosition);
         	lastPlatformHeight = spawnYPosition;
