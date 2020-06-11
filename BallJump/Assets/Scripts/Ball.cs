@@ -47,7 +47,7 @@ public class Ball : MonoBehaviour
                 }
             #endif
 
-            if (transform.position.y < cam.transform.position.y - 0.5f * camHeight)
+            if (transform.position.y < cam.transform.position.y - 0.5f * camHeight - 0.5f)
             {
                 GameControl.instance.PlayerDied();
             }

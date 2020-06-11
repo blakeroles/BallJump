@@ -61,6 +61,7 @@ public class GameControl : MonoBehaviour
     	}
     	
     	gameOverText.SetActive(true);
+		Time.timeScale = 0f;
     	gameOver = true;
     }
 
