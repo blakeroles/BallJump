@@ -15,7 +15,7 @@ public class GameControl : MonoBehaviour
 	public float screenMin;
 	public float screenMax;
 
-	private int score = 0;
+	public int score = 0;
 	private int highScore;
 
     // Start is called before the first frame update

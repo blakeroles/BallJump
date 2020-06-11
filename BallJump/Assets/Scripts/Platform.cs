@@ -6,8 +6,12 @@ public class Platform : MonoBehaviour
 {
 	public float speed = 2.0f;
 	public float chanceOfMoving = 0.7f;
+	public float chanceOfSpikes = 1.0f;
+	public int scoreToStartMovingPlatforms = 30;
 
-	private bool isMoving;
+	private bool isMoving = false;
+	private bool changedMoveState = false;
+	private bool isSpiky;
 	private int direction = 1;
 	private Vector3 movement;
 	private float RANDOM_MIN_RANGE = 0.0f;
@@ -17,19 +21,33 @@ public class Platform : MonoBehaviour
     void Start()
     {
 
-    	if (Random.Range(RANDOM_MIN_RANGE, RANDOM_MAX_RANGE) < chanceOfMoving)
+    	if (Random.Range(RANDOM_MIN_RANGE, RANDOM_MAX_RANGE) < chanceOfSpikes)
     	{
-    		isMoving = false;
+    		isSpiky = false;
     	}
-    	else
+    	else 
     	{
-    		isMoving = true;
+    		isSpiky = true;
     	}
     }
 
     // Update is called once per frame
     void Update()
     {
+
+		if (GameControl.instance.score > scoreToStartMovingPlatforms && !changedMoveState)
+		{
+			if (Random.Range(RANDOM_MIN_RANGE, RANDOM_MAX_RANGE) < chanceOfMoving)
+			{
+				isMoving = false;
+			}
+			else
+			{
+				isMoving = true;
+			}
+			changedMoveState = true;
+		}
+
         if (isMoving)
         {
         	if (transform.position.x > GameControl.instance.screenMax)
@@ -43,5 +61,13 @@ public class Platform : MonoBehaviour
         	movement = Vector3.right * direction * speed * Time.deltaTime;
         	transform.Translate(movement);
         }
+    }
+
+    void OnCollisionEnter2D()
+    {
+    	if (isSpiky)
+    	{
+    		//GameControl.instance.PlayerDied();
+    	}
     }
 }

@@ -8,7 +8,7 @@ public class PlatformPool : MonoBehaviour
 	public int platformPoolSize;
 	public GameObject platformPrefab;
 	public float spawnRate;
-	public float gapBetweenPlatforms;
+	public float maxGapBetweenPlatforms;
 	public GameObject player;
     public int numberOfPlatformsToSpawn;
 
@@ -37,7 +37,7 @@ public class PlatformPool : MonoBehaviour
             } 
             else if (i >= platformPoolSize - numberOfPlatformsToSpawn)
             {
-                platforms[i] = (GameObject) Instantiate(platformPrefab, new Vector2(Random.Range(GameControl.instance.screenMin, GameControl.instance.screenMax), lastPlatformHeight + gapBetweenPlatforms), Quaternion.identity);
+                platforms[i] = (GameObject) Instantiate(platformPrefab, new Vector2(Random.Range(GameControl.instance.screenMin, GameControl.instance.screenMax), lastPlatformHeight + Random.Range(0.0f, maxGapBetweenPlatforms)), Quaternion.identity);
             }
             else
             {
@@ -64,7 +64,7 @@ public class PlatformPool : MonoBehaviour
         {
         	timeSinceLastSpawned = 0;
         	float spawnXPosition = Random.Range(GameControl.instance.screenMin, GameControl.instance.screenMax);
-        	float spawnYPosition = lastPlatformHeight + gapBetweenPlatforms;
+        	float spawnYPosition = lastPlatformHeight + Random.Range(0.0f, maxGapBetweenPlatforms);
         	platforms[currentPlatform].transform.position = new Vector2(spawnXPosition, spawnYPosition);
         	lastPlatformHeight = spawnYPosition;
         	currentPlatform++;
