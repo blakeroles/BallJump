@@ -16,10 +16,19 @@ public class Platform : MonoBehaviour
 	private Vector3 movement;
 	private float RANDOM_MIN_RANGE = 0.0f;
 	private float RANDOM_MAX_RANGE = 1.0f;
+	//private Dictionary<int, float> speedDict;
+	//private bool changedSpeed = false;
 
     // Start is called before the first frame update
     void Start()
     {
+
+		//speedDict = new Dictionary<int, float>();
+		//speedDict.Add(0, 0.0f);
+		//speedDict.Add(30, 1.0f);
+		//speedDict.Add(50, 1.25f);
+		//speedDict.Add(75, 1.5f);
+		//speedDict.Add(100, 2.0f);
 
     	if (Random.Range(RANDOM_MIN_RANGE, RANDOM_MAX_RANGE) < chanceOfSpikes)
     	{
@@ -34,6 +43,8 @@ public class Platform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+		
 
 		if (GameControl.instance.score > scoreToStartMovingPlatforms && !changedMoveState)
 		{
