@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-	public float speed = 2.0f;
+	public float INITIAL_SPEED = 2.0f;
 	public float chanceOfMoving = 0.7f;
 	public float chanceOfSpikes = 1.0f;
 	public int scoreToStartMovingPlatforms = 30;
@@ -16,19 +16,24 @@ public class Platform : MonoBehaviour
 	private Vector3 movement;
 	private float RANDOM_MIN_RANGE = 0.0f;
 	private float RANDOM_MAX_RANGE = 1.0f;
-	//private Dictionary<int, float> speedDict;
-	//private bool changedSpeed = false;
+	private float speed;
+	private int SCORE_THIRTY = 30;
+	private int SCORE_FIFTY = 50;
+	private int SCORE_SEVENTYFIVE = 75;
+	private int SCORE_ONEHUNDRED = 100;
+	private float ZERO_MULT = 0.0f;
+	private float ONE_MULT = 1.0f;
+	private float ONE_POINT_FIVE_MULT = 1.5f;
+	private float TWO_MULT = 2.0f;
+	private float TWO_POINT_FIVE_MULT = 2.5f;
+	
+
+	
 
     // Start is called before the first frame update
     void Start()
     {
 
-		//speedDict = new Dictionary<int, float>();
-		//speedDict.Add(0, 0.0f);
-		//speedDict.Add(30, 1.0f);
-		//speedDict.Add(50, 1.25f);
-		//speedDict.Add(75, 1.5f);
-		//speedDict.Add(100, 2.0f);
 
     	if (Random.Range(RANDOM_MIN_RANGE, RANDOM_MAX_RANGE) < chanceOfSpikes)
     	{
@@ -44,6 +49,26 @@ public class Platform : MonoBehaviour
     void Update()
     {
 
+		if (GameControl.instance.score < SCORE_THIRTY)
+		{
+			speed = ZERO_MULT * INITIAL_SPEED;
+		}
+		else if (GameControl.instance.score < SCORE_FIFTY)
+		{
+			speed = ONE_MULT * INITIAL_SPEED;
+		}
+		else if (GameControl.instance.score < SCORE_SEVENTYFIVE)
+		{
+			speed = ONE_POINT_FIVE_MULT * INITIAL_SPEED;
+		}
+		else if (GameControl.instance.score < SCORE_ONEHUNDRED)
+		{
+			speed = TWO_MULT * INITIAL_SPEED;
+		}
+		else if (GameControl.instance.score >= SCORE_ONEHUNDRED)
+		{
+			speed = TWO_POINT_FIVE_MULT * INITIAL_SPEED;
+		}
 		
 
 		if (GameControl.instance.score > scoreToStartMovingPlatforms && !changedMoveState)
