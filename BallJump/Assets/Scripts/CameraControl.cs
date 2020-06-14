@@ -31,14 +31,18 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-    	if (target.position.y > lastYPosition && target.GetComponent<Rigidbody2D>().velocity.y >= 0 && trackingTarget)
-    	{
+		if (trackingTarget)
+		{
+			if (target.position.y > lastYPosition && target.GetComponent<Rigidbody2D>().velocity.y >= 0)
+			{
 
-        	Vector3 targetPos = new Vector3(transform.position.x, target.position.y, transform.position.z);
+				Vector3 targetPos = new Vector3(transform.position.x, target.position.y, transform.position.z);
 
-        	transform.position = targetPos;
-        	lastYPosition = target.position.y;
-    	}
+				transform.position = targetPos;
+				lastYPosition = target.position.y;
+			}
+		}
+
 
 
     }
