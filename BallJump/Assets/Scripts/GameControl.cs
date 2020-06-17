@@ -15,7 +15,8 @@ public class GameControl : MonoBehaviour
 	public float screenMin;
 	public float screenMax;
 	public GameObject coinPrefab;
-	public float coinSpawnRate;
+	public float minCoinSpawnRate;
+	public float maxCoinSpawnRate;
 	public int coinScoreIncrease;
 
 	public int score = 0;
@@ -25,6 +26,7 @@ public class GameControl : MonoBehaviour
 	private GameObject coin;
 	private float height;
 	private float width;
+	private float coinSpawnRate;
 
     // Start is called before the first frame update
     void Awake()
@@ -52,6 +54,8 @@ public class GameControl : MonoBehaviour
 
         screenMin = -1f * width / 2;
         screenMax = 1f * width / 2;
+
+		coinSpawnRate = Random.Range(minCoinSpawnRate, maxCoinSpawnRate);
     }
 
     // Update is called once per frame
@@ -61,6 +65,7 @@ public class GameControl : MonoBehaviour
 		if (GameControl.instance.gameOver == false && timeSinceLastCoinSpawned >= coinSpawnRate)
         {
 			timeSinceLastCoinSpawned = 0;
+			coinSpawnRate = Random.Range(minCoinSpawnRate, maxCoinSpawnRate);
 			Destroy(coin);
 			SpawnCoin();
         }
@@ -68,7 +73,7 @@ public class GameControl : MonoBehaviour
 
 	public void SpawnCoin()
 	{
-		coin = (GameObject) Instantiate(coinPrefab, new Vector2(Random.Range(screenMin, screenMax), Random.Range(player.transform.position.y, player.transform.position.y + height)), Quaternion.identity);
+		coin = (GameObject) Instantiate(coinPrefab, new Vector2(Random.Range(screenMin, screenMax), Random.Range(player.transform.position.y + height, player.transform.position.y + 2f * height)), Quaternion.identity);
 	}
 
 	public void PlayerHitCoin()

@@ -2361,7 +2361,8 @@ MonoBehaviour:
   screenMax: 0
   coinPrefab: {fileID: 2366158916843149061, guid: faae7627bfb47435a9d0890bdb61b0fe,
     type: 3}
-  coinSpawnRate: 15
+  minCoinSpawnRate: 10
+  maxCoinSpawnRate: 30
   coinScoreIncrease: 10
   score: 0
   player: {fileID: 629376049}
