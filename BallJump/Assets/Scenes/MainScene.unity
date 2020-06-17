@@ -2359,7 +2359,12 @@ MonoBehaviour:
   gameOver: 0
   screenMin: 0
   screenMax: 0
+  coinPrefab: {fileID: 2366158916843149061, guid: faae7627bfb47435a9d0890bdb61b0fe,
+    type: 3}
+  coinSpawnRate: 15
+  coinScoreIncrease: 10
   score: 0
+  player: {fileID: 629376049}
 --- !u!4 &1413069019
 Transform:
   m_ObjectHideFlags: 0

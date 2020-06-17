@@ -8,6 +8,7 @@ public class SoundManagerScript : MonoBehaviour
 	public static AudioClip collidePlatformSound;
 	public static AudioClip gameOverSound;
 	public static AudioClip tapSound;
+	public static AudioClip coinSound;
 
 	static AudioSource audioSrc;
 
@@ -17,6 +18,7 @@ public class SoundManagerScript : MonoBehaviour
         collidePlatformSound = Resources.Load<AudioClip>("collision");
         gameOverSound = Resources.Load<AudioClip>("game_over");
         tapSound = Resources.Load<AudioClip>("tap");
+		coinSound = Resources.Load<AudioClip>("coin_chime");
 
         audioSrc = GetComponent<AudioSource>();
     }
@@ -40,6 +42,9 @@ public class SoundManagerScript : MonoBehaviour
     		case "tap":
     			audioSrc.PlayOneShot(tapSound);
     			break;
+			case "coin_chime":
+				audioSrc.PlayOneShot(coinSound);
+				break;
     	}
     }
 }

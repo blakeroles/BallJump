@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0f683ad42104ab7aec3ac82a983a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  INITIAL_SPEED: 2
   chanceOfMoving: 0.7
   chanceOfSpikes: 1
   scoreToStartMovingPlatforms: 30

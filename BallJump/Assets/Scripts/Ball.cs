@@ -56,13 +56,11 @@ public class Ball : MonoBehaviour
 
             if (transform.position.x > 0.5f * camWidth)
             {
-                Debug.Log("Off Right");
                 transform.position = new Vector3(-0.5f * camWidth, transform.position.y, transform.position.z);
             }
 
             if (transform.position.x < -0.5f * camWidth)
             {
-                Debug.Log("Off Left");
                 transform.position = new Vector3(0.5f * camWidth, transform.position.y, transform.position.z);
             }
 
@@ -92,7 +90,22 @@ public class Ball : MonoBehaviour
             GameControl.instance.PlayerScored();
         }
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(0, yForce));
+        if (col.gameObject.tag == "Platform")
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, yForce));
+        }
+
+
+
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Coin")
+        {
+            GameControl.instance.PlayerHitCoin();
+            Destroy(col.gameObject);
+        }
     }
 }

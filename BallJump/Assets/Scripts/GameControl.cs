@@ -14,9 +14,17 @@ public class GameControl : MonoBehaviour
 	public bool gameOver = false;
 	public float screenMin;
 	public float screenMax;
+	public GameObject coinPrefab;
+	public float coinSpawnRate;
+	public int coinScoreIncrease;
 
 	public int score = 0;
+	public GameObject player;
 	private int highScore;
+	private float timeSinceLastCoinSpawned;
+	private GameObject coin;
+	private float height;
+	private float width;
 
     // Start is called before the first frame update
     void Awake()
@@ -39,8 +47,8 @@ public class GameControl : MonoBehaviour
     	}
 
     	Camera cam = Camera.main;
-        float height = 2f * cam.orthographicSize;
-        float width = height * cam.aspect;
+        height = 2f * cam.orthographicSize;
+        width = height * cam.aspect;
 
         screenMin = -1f * width / 2;
         screenMax = 1f * width / 2;
@@ -49,9 +57,37 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+		timeSinceLastCoinSpawned += Time.deltaTime;
+		if (GameControl.instance.gameOver == false && timeSinceLastCoinSpawned >= coinSpawnRate)
+        {
+			timeSinceLastCoinSpawned = 0;
+			Destroy(coin);
+			SpawnCoin();
+        }
     }
 
+	public void SpawnCoin()
+	{
+		coin = (GameObject) Instantiate(coinPrefab, new Vector2(Random.Range(screenMin, screenMax), Random.Range(player.transform.position.y, player.transform.position.y + height)), Quaternion.identity);
+	}
+
+	public void PlayerHitCoin()
+	{
+		if (gameOver)
+		{
+			return;
+		}
+
+		if (OptionsMenu.soundIsOn)
+		{
+			SoundManagerScript.PlaySound("coin_chime");
+		}
+
+		score += coinScoreIncrease;
+		scoreText.text = "Score: " + score.ToString();
+
+		UpdateHighScore();
+	}
 
     public void PlayerDied()
     {
