@@ -12,12 +12,14 @@ public class Ball : MonoBehaviour
 
     private List<float> hitPlatformYs = new List<float>();
     private float camHeight;
+    private float camWidth;
 
     // Start is called before the first frame update
     void Start()
     {
         Camera camSize = Camera.main;
         camHeight = 2f * camSize.orthographicSize;
+        camWidth = camHeight * camSize.aspect;
     }
 
     // Update is called once per frame
@@ -50,6 +52,18 @@ public class Ball : MonoBehaviour
             if (transform.position.y < cam.transform.position.y - 0.5f * camHeight - 0.5f)
             {
                 GameControl.instance.PlayerDied();
+            }
+
+            if (transform.position.x > 0.5f * camWidth)
+            {
+                Debug.Log("Off Right");
+                transform.position = new Vector3(-0.5f * camWidth, transform.position.y, transform.position.z);
+            }
+
+            if (transform.position.x < -0.5f * camWidth)
+            {
+                Debug.Log("Off Left");
+                transform.position = new Vector3(0.5f * camWidth, transform.position.y, transform.position.z);
             }
 
     	}
