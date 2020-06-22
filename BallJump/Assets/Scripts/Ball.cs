@@ -107,5 +107,10 @@ public class Ball : MonoBehaviour
             GameControl.instance.PlayerHitCoin();
             Destroy(col.gameObject);
         }
+
+        if (col.gameObject.tag == "Cube Enemy")
+        {
+            GameControl.instance.PlayerDied();
+        }
     }
 }

@@ -18,15 +18,22 @@ public class GameControl : MonoBehaviour
 	public float minCoinSpawnRate;
 	public float maxCoinSpawnRate;
 	public int coinScoreIncrease;
+	public GameObject cubeEnemyPrefab;
+	public float minCubeEnemySpawnRate;
+	public float maxCubeEnemySpawnRate;
 
 	public int score = 0;
 	public GameObject player;
 	private int highScore;
 	private float timeSinceLastCoinSpawned;
+	private float timeSinceLastCubeEnemySpawned;
 	private GameObject coin;
 	private float height;
 	private float width;
 	private float coinSpawnRate;
+	private GameObject cubeEnemy;
+	private float cubeEnemySpawnRate;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -56,12 +63,14 @@ public class GameControl : MonoBehaviour
         screenMax = 1f * width / 2;
 
 		coinSpawnRate = Random.Range(minCoinSpawnRate, maxCoinSpawnRate);
+		cubeEnemySpawnRate = Random.Range(minCubeEnemySpawnRate, maxCubeEnemySpawnRate);
     }
 
     // Update is called once per frame
     void Update()
     {
 		timeSinceLastCoinSpawned += Time.deltaTime;
+		timeSinceLastCubeEnemySpawned += Time.deltaTime;
 		if (GameControl.instance.gameOver == false && timeSinceLastCoinSpawned >= coinSpawnRate)
         {
 			timeSinceLastCoinSpawned = 0;
@@ -69,11 +78,24 @@ public class GameControl : MonoBehaviour
 			Destroy(coin);
 			SpawnCoin();
         }
+
+		if (GameControl.instance.gameOver == false && timeSinceLastCubeEnemySpawned >= cubeEnemySpawnRate)
+		{
+			timeSinceLastCubeEnemySpawned = 0;
+			cubeEnemySpawnRate = Random.Range(minCubeEnemySpawnRate, maxCubeEnemySpawnRate);
+			Destroy(cubeEnemy);
+			SpawnCubeEnemy();
+		}
     }
 
 	public void SpawnCoin()
 	{
 		coin = (GameObject) Instantiate(coinPrefab, new Vector2(Random.Range(screenMin, screenMax), Random.Range(player.transform.position.y + height, player.transform.position.y + 2f * height)), Quaternion.identity);
+	}
+
+	public void SpawnCubeEnemy()
+	{
+		cubeEnemy = (GameObject) Instantiate(cubeEnemyPrefab, new Vector2(Random.Range(screenMin, screenMax), Random.Range(player.transform.position.y + height, player.transform.position.y + 2f * height)), Quaternion.identity);
 	}
 
 	public void PlayerHitCoin()

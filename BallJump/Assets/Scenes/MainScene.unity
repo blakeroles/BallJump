@@ -2364,6 +2364,10 @@ MonoBehaviour:
   minCoinSpawnRate: 10
   maxCoinSpawnRate: 30
   coinScoreIncrease: 10
+  cubeEnemyPrefab: {fileID: 6125575783013847858, guid: c47dee81a69a7414bb37a3deeabd4cac,
+    type: 3}
+  minCubeEnemySpawnRate: 10
+  maxCubeEnemySpawnRate: 30
   score: 0
   player: {fileID: 629376049}
 --- !u!4 &1413069019
