@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Coin
+  - Cube Enemy
   layers:
   - Default
   - TransparentFX

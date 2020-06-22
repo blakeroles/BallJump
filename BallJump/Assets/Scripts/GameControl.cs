@@ -111,7 +111,7 @@ public class GameControl : MonoBehaviour
 		}
 
 		score += coinScoreIncrease;
-		scoreText.text = "Score: " + score.ToString();
+		scoreText.text = "SCORE: " + score.ToString();
 
 		UpdateHighScore();
 	}
@@ -135,7 +135,7 @@ public class GameControl : MonoBehaviour
     		return;
     	}
     	score++;
-    	scoreText.text = "Score: " + score.ToString(); 
+    	scoreText.text = "SCORE: " + score.ToString(); 
 
     	UpdateHighScore();
     	
