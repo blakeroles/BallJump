@@ -707,6 +707,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="GoogleMobileAds.csproj">
+      <Project>{9493cb3a-3fde-3ece-000e-f49ea59a2436}</Project>
+      <Name>GoogleMobileAds</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="GoogleMobileAds.Editor.csproj">
+      <Project>{168ed7ff-4834-94e5-eba0-131218f31061}</Project>
+      <Name>GoogleMobileAds.Editor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -39,6 +39,7 @@
      <Compile Include="Assets\Shapes2D\Editor\CustomHandles.cs" />
      <Compile Include="Assets\Shapes2D\Editor\MenuItems.cs" />
      <Compile Include="Assets\Shapes2D\Editor\ShapeEditor.cs" />
+     <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.156_manifest.txt" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2019.3.14f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -254,6 +255,18 @@
     </Reference>
     <Reference Include="Google.VersionHandler">
         <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Library/PackageCache/com.google.external-dependency-manager@1.2.155/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.JarResolver_v1.2.156">
+        <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Assets/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.156.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandlerImpl_v1.2.156">
+        <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.156.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.IOSResolver_v1.2.156">
+        <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Assets/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.156.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.PackageManagerResolver_v1.2.156">
+        <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.156.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
         <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -710,6 +723,16 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{642be002-9d99-b7c6-a5da-c327834f45ac}</Project>
       <Name>Assembly-CSharp</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="GoogleMobileAds.csproj">
+      <Project>{9493cb3a-3fde-3ece-000e-f49ea59a2436}</Project>
+      <Name>GoogleMobileAds</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="GoogleMobileAds.Editor.csproj">
+      <Project>{168ed7ff-4834-94e5-eba0-131218f31061}</Project>
+      <Name>GoogleMobileAds.Editor</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
