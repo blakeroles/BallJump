@@ -25,9 +25,9 @@ public class AdBanner : MonoBehaviour
     private void RequestBanner()
     {
     	#if UNITY_ANDROID
-    		string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+    		string adUnitId = "ca-app-pub-3117719815913092/5857758033";
     	#elif UNITY_IPHONE
-    		string adUnitId = "ca-app-pub-3940256099942544/2934735716";
+    		string adUnitId = "ca-app-pub-3117719815913092/9986586608";
     	#else
     		string adUnitId = "unexpected_platform";
     	#endif

@@ -18,7 +18,7 @@ public class PlatformPool : MonoBehaviour
 	private float timeSinceLastSpawned;
 	private int currentPlatform = 0;
 	private float initialPlatformXPosition = 0.0f;
-	private float initialPlatformYPosition = -4.64f;
+	private float initialPlatformYPosition = -4.14f;
 	private float lastPlatformHeight;
 
 
