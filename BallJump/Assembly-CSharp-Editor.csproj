@@ -268,18 +268,6 @@
     <Reference Include="Google.VersionHandler">
         <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Library/PackageCache/com.google.external-dependency-manager@1.2.155/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
     </Reference>
-    <Reference Include="Google.JarResolver_v1.2.156">
-        <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Assets/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.156.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandlerImpl_v1.2.156">
-        <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.156.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.IOSResolver_v1.2.156">
-        <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Assets/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.156.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.PackageManagerResolver_v1.2.156">
-        <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.156.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework">
         <HintPath>/Users/blakeroles/Documents/GitHub Repositories/BallJump/BallJump/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
