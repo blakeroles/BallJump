@@ -49,6 +49,24 @@ public class Ball : MonoBehaviour
                 }
             #endif
 
+            #if UNITY_IPHONE
+                
+                if (Input.touchCount > 0)
+                {
+
+                    Touch touch = Input.GetTouch(0);
+
+                    if (touch.position.x < Screen.width/2)
+                    {
+                        GetComponent<Rigidbody2D>().AddForce(new Vector2(-xMobileTapForce, 0));
+                    }
+                    else if (touch.position.x > Screen.width/2)
+                    {
+                        GetComponent<Rigidbody2D>().AddForce(new Vector2(xMobileTapForce, 0));
+                    }
+                }
+            #endif
+
             if (transform.position.y < cam.transform.position.y - 0.5f * camHeight - 0.5f)
             {
                 GameControl.instance.PlayerDied();
