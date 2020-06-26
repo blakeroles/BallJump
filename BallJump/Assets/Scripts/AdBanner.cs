@@ -29,9 +29,9 @@ public class AdBanner : MonoBehaviour
             // Test Ad
             //string adUnitId = "ca-app-pub-3940256099942544/6300978111";   
     	#elif UNITY_IPHONE
-    		//string adUnitId = "ca-app-pub-3117719815913092/9986586608";
+    		string adUnitId = "ca-app-pub-3117719815913092/9986586608";
             // Test ad
-            string adUnitId = "ca-app-pub-3940256099942544/2934735716";
+            //string adUnitId = "ca-app-pub-3940256099942544/2934735716";
     	#else
     		string adUnitId = "unexpected_platform";
     	#endif

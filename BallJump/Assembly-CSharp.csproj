@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\RepeatingBackground.cs" />
      <Compile Include="Assets\Scripts\ScrollingObject.cs" />
      <Compile Include="Assets\Scripts\SoundManagerScript.cs" />
+     <Compile Include="Assets\Scripts\TakeScreenshot.cs" />
      <Compile Include="Assets\Shapes2D\Demos\DragCamera.cs" />
      <Compile Include="Assets\Shapes2D\Demos\Flappy Shapes\Bird.cs" />
      <Compile Include="Assets\Shapes2D\Demos\Flappy Shapes\Game.cs" />

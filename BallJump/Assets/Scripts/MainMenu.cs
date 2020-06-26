@@ -23,11 +23,11 @@ public class MainMenu : MonoBehaviour
 		#if UNITY_ANDROID
         	string adUnitId = "ca-app-pub-3117719815913092/3090005767";
 			// Test ad
-			string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+			//string adUnitId = "ca-app-pub-3940256099942544/1033173712";
     	#elif UNITY_IPHONE
-			//string adUnitId = "ca-app-pub-3117719815913092/6562825846";
+			string adUnitId = "ca-app-pub-3117719815913092/6562825846";
 			// Test ad
-        	string adUnitId = "ca-app-pub-3940256099942544/4411468910";
+        	//string adUnitId = "ca-app-pub-3940256099942544/4411468910";
     	#else
         	string adUnitId = "unexpected_platform";
     	#endif
@@ -54,7 +54,10 @@ public class MainMenu : MonoBehaviour
 
 	public void showInterstitialAd()
 	{
-
+		if (OptionsMenu.soundIsOn)
+		{
+			SoundManagerScript.PlaySound("tap");
+		}
 		if (this.interstitial.IsLoaded()) {
 			this.interstitial.Show();
 		}
