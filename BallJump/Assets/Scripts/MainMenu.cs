@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 {
 
 	public Text highScoreText;
+	public Text DeviceIDText;
 
 	// private InterstitialAd interstitial;
 
@@ -19,6 +20,8 @@ public class MainMenu : MonoBehaviour
 		{
 			highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore").ToString();
 		}
+
+		DeviceIDText.text = SystemInfo.deviceUniqueIdentifier;
 
 		// #if UNITY_ANDROID
         // 	string adUnitId = "ca-app-pub-3117719815913092/3090005767";

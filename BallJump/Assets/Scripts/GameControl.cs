@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GoogleMobileAds.Api;
 
 public class GameControl : MonoBehaviour
 {
@@ -64,6 +65,12 @@ public class GameControl : MonoBehaviour
 
 		coinSpawnRate = Random.Range(minCoinSpawnRate, maxCoinSpawnRate);
 		cubeEnemySpawnRate = Random.Range(minCubeEnemySpawnRate, maxCubeEnemySpawnRate);
+
+		List<string> deviceIds = new List<string>();
+		deviceIds.Add("ee4ec563d1de0b1daa96d57376b9bbc6");
+		RequestConfiguration requestConfiguration = new RequestConfiguration.Builder().SetTestDeviceIds(deviceIds).build();
+		MobileAds.SetRequestConfiguration(requestConfiguration);
+
     }
 
     // Update is called once per frame
@@ -86,6 +93,7 @@ public class GameControl : MonoBehaviour
 			Destroy(cubeEnemy);
 			SpawnCubeEnemy();
 		}
+
     }
 
 	public void SpawnCoin()

@@ -17,15 +17,19 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-    	if (OptionsMenu.soundIsOn)
-    	{
-    		SoundManagerScript.PlaySound("tap");
-    	}
-    	
-    	pauseMenuUI.SetActive(true);
-    	pauseButton.SetActive(false);
-    	Time.timeScale = 0f;
-    	gameIsPaused = true;
+		if (!GameControl.instance.gameOver)
+		{
+			if (OptionsMenu.soundIsOn)
+			{
+				SoundManagerScript.PlaySound("tap");
+			}
+			
+			pauseMenuUI.SetActive(true);
+			pauseButton.SetActive(false);
+			Time.timeScale = 0f;
+			gameIsPaused = true;
+		}
+
 
     }
 
