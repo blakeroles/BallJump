@@ -17,9 +17,13 @@ public class TakeScreenshot : MonoBehaviour
         
     }
 
-    //[MenuItem("Tools/Take Screenshot")]
+    #if UNITY_EDITOR
+    [MenuItem("Tools/Take Screenshot")]
+    #endif
     static public void OnTakeScreenShot()
     {
-        //ScreenCapture.CaptureScreenshot(EditorUtility.SaveFilePanel("Save Screenshot As", "test", "test", "png"));
+        #if UNITY_EDITOR
+            ScreenCapture.CaptureScreenshot(EditorUtility.SaveFilePanel("Save Screenshot As", "test", "test", "png"));
+        #endif
     }
 }
