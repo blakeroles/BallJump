@@ -125,10 +125,7 @@ public class GameControl : MonoBehaviour
 			return;
 		}
 
-		if (OptionsMenu.soundIsOn)
-		{
-			SoundManagerScript.PlaySound("coin_chime");
-		}
+		SoundManagerScript.PlaySound("coin_chime");
 
 		score += coinScoreIncrease;
 		scoreText.text = "SCORE: " + score.ToString();
@@ -138,10 +135,8 @@ public class GameControl : MonoBehaviour
 
 	public void PlayerSecondChance()
 	{
-		if (OptionsMenu.soundIsOn)
-    	{
-    		SoundManagerScript.PlaySound("game_over");
-    	}
+    	SoundManagerScript.PlaySound("game_over");
+
 		secondChanceCanvas.SetActive(true);
 
 		if (PlayerPrefs.GetInt("GameContinued") == 1)

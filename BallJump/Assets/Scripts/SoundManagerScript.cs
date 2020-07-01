@@ -31,20 +31,24 @@ public class SoundManagerScript : MonoBehaviour
 
     public static void PlaySound(string clip)
     {
-    	switch (clip)
-    	{
-    		case "collision":
-    			audioSrc.PlayOneShot(collidePlatformSound);
-    			break;
-    		case "game_over":
-    			audioSrc.PlayOneShot(gameOverSound);
-    			break;
-    		case "tap":
-    			audioSrc.PlayOneShot(tapSound);
-    			break;
-			case "coin_chime":
-				audioSrc.PlayOneShot(coinSound);
-				break;
-    	}
+		if (OptionsMenu.soundIsOn)
+		{
+			switch (clip)
+			{
+				case "collision":
+					audioSrc.PlayOneShot(collidePlatformSound);
+					break;
+				case "game_over":
+					audioSrc.PlayOneShot(gameOverSound);
+					break;
+				case "tap":
+					audioSrc.PlayOneShot(tapSound);
+					break;
+				case "coin_chime":
+					audioSrc.PlayOneShot(coinSound);
+					break;
+			}
+		}
+
     }
 }

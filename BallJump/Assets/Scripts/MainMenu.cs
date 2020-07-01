@@ -28,10 +28,8 @@ public class MainMenu : MonoBehaviour
 
 	public void PlayGame()
 	{
-		if (OptionsMenu.soundIsOn)
-		{
-			SoundManagerScript.PlaySound("tap");
-		}
+		SoundManagerScript.PlaySound("tap");
+
 		PlayerPrefs.SetInt("GameContinued", 0);
 		SceneManager.LoadScene("MainScene");
 	}

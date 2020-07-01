@@ -52,10 +52,8 @@ public class PauseMenu : MonoBehaviour
     {
 		if (!GameControl.instance.gameOver)
 		{
-			if (OptionsMenu.soundIsOn)
-			{
-				SoundManagerScript.PlaySound("tap");
-			}
+			SoundManagerScript.PlaySound("tap");
+
 			
 			pauseMenuUI.SetActive(true);
 			pauseButton.SetActive(false);
@@ -68,10 +66,8 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-    	if (OptionsMenu.soundIsOn)
-    	{
-    		SoundManagerScript.PlaySound("tap");
-    	}
+    	SoundManagerScript.PlaySound("tap");
+
     	pauseMenuUI.SetActive(false);
     	pauseButton.SetActive(true);
     	Time.timeScale = 1f;
@@ -80,29 +76,21 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMainMenu()
     {
-    	if (OptionsMenu.soundIsOn)
-    	{
-    		SoundManagerScript.PlaySound("tap");
-    	}
+    	SoundManagerScript.PlaySound("tap");
+
 		GameControl.instance.PlayerDied();
     	SceneManager.LoadScene("TitleScene");
     }
 
     public void QuitGame()
     {
-    	if (OptionsMenu.soundIsOn)
-    	{
-    		SoundManagerScript.PlaySound("tap");
-    	}
+    	SoundManagerScript.PlaySound("tap");
     	Application.Quit();
     }
 
 	public void ContinueGame()
 	{
-		if (OptionsMenu.soundIsOn)
-    	{
-    		SoundManagerScript.PlaySound("tap");
-    	}
+    	SoundManagerScript.PlaySound("tap");
 
 		if (PlayerPrefs.GetInt("GameContinued") == 0)
 		{
