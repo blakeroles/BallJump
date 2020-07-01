@@ -149,6 +149,7 @@ public class GameControl : MonoBehaviour
 			continueButton.SetActive(false);
 		}
 		Time.timeScale = 0f;
+		gameOver = true;
 	}
 
     public void PlayerDied()
