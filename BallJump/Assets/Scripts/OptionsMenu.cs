@@ -36,13 +36,13 @@ public class OptionsMenu : MonoBehaviour
 		if (soundIsOn)
 		{
 			soundIsOn = false;
-			toggleSoundButtonText.text = "Sound On";
+			toggleSoundButtonText.text = "SOUND ON";
 			SoundManagerScript.PlaySound("tap");
 		}
 		else
 		{
 			soundIsOn = true;
-			toggleSoundButtonText.text = "Sound Off";
+			toggleSoundButtonText.text = "SOUND OFF";
 			SoundManagerScript.PlaySound("tap");
 		}
 	}
