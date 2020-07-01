@@ -64,6 +64,10 @@ public class GameControl : MonoBehaviour
 		{
 			score = PlayerPrefs.GetInt("GameContinueScore");
 			scoreText.text = "SCORE: " + score.ToString();
+			if (score >= highScore)
+			{
+				scoreText.color = Color.yellow;
+			}
 		}
 
     	Camera cam = Camera.main;
@@ -171,6 +175,8 @@ public class GameControl : MonoBehaviour
     	{
     		highScore = score;
     		PlayerPrefs.SetInt("HighScore", highScore);
+			scoreText.color = Color.yellow;
+			//scoreText.color = new Color(r,g,b,a);
     	}
     }
 }

@@ -2669,7 +2669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.05882353, b: 0.36862746, a: 1}
+  m_Color: {r: 0.011764707, g: 0.07058824, b: 0.31764707, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2861,7 +2861,6 @@ MonoBehaviour:
   secondChanceCanvas: {fileID: 806461595}
   continueButton: {fileID: 162646691}
   scoreText: {fileID: 1405925241}
-  highScoreText: {fileID: 0}
   gameOver: 0
   gameContinued: 0
   screenMin: 0
