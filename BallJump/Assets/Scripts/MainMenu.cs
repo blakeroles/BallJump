@@ -51,7 +51,7 @@ public class MainMenu : MonoBehaviour
 		{
 			SoundManagerScript.PlaySound("tap");
 		}
-		
+		PlayerPrefs.SetInt("GameContinued", 0);
 		SceneManager.LoadScene("MainScene");
 	}
 

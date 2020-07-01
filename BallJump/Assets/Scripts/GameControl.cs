@@ -9,10 +9,11 @@ public class GameControl : MonoBehaviour
 {
 
 	public static GameControl instance;
-	public GameObject gameOverText;
+	public GameObject secondChanceCanvas;
+	public GameObject continueButton;
 	public Text scoreText;
-	public Text highScoreText;
 	public bool gameOver = false;
+	public bool gameContinued = false;
 	public float screenMin;
 	public float screenMax;
 	public GameObject coinPrefab;
@@ -47,14 +48,23 @@ public class GameControl : MonoBehaviour
         {
         	Destroy(gameObject);
         }
+
+		
     }
 
     void Start()
     {
+
     	if (PlayerPrefs.HasKey("HighScore"))
     	{
     		highScore = PlayerPrefs.GetInt("HighScore");
     	}
+
+		if (PlayerPrefs.GetInt("GameContinued") == 1)
+		{
+			score = PlayerPrefs.GetInt("GameContinueScore");
+			scoreText.text = "SCORE: " + score.ToString();
+		}
 
     	Camera cam = Camera.main;
         height = 2f * cam.orthographicSize;
@@ -70,6 +80,8 @@ public class GameControl : MonoBehaviour
 		deviceIds.Add("ee4ec563d1de0b1daa96d57376b9bbc6");
 		RequestConfiguration requestConfiguration = new RequestConfiguration.Builder().SetTestDeviceIds(deviceIds).build();
 		MobileAds.SetRequestConfiguration(requestConfiguration);
+
+		Time.timeScale = 1f;
 
     }
 
@@ -124,15 +136,23 @@ public class GameControl : MonoBehaviour
 		UpdateHighScore();
 	}
 
-    public void PlayerDied()
-    {
-    	if (OptionsMenu.soundIsOn)
+	public void PlayerSecondChance()
+	{
+		if (OptionsMenu.soundIsOn)
     	{
     		SoundManagerScript.PlaySound("game_over");
     	}
-    	
-    	gameOverText.SetActive(true);
+		secondChanceCanvas.SetActive(true);
+
+		if (PlayerPrefs.GetInt("GameContinued") == 1)
+		{
+			continueButton.SetActive(false);
+		}
 		Time.timeScale = 0f;
+	}
+
+    public void PlayerDied()
+    {
     	gameOver = true;
     }
 

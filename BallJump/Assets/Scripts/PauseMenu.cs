@@ -51,7 +51,7 @@ public class PauseMenu : MonoBehaviour
     	{
     		SoundManagerScript.PlaySound("tap");
     	}
-    	Time.timeScale = 1f;
+		GameControl.instance.PlayerDied();
     	SceneManager.LoadScene("TitleScene");
     }
 
@@ -63,5 +63,28 @@ public class PauseMenu : MonoBehaviour
     	}
     	Application.Quit();
     }
+
+	public void ContinueGame()
+	{
+		if (OptionsMenu.soundIsOn)
+    	{
+    		SoundManagerScript.PlaySound("tap");
+    	}
+
+		if (PlayerPrefs.GetInt("GameContinued") == 0)
+		{
+			PlayerPrefs.SetInt("GameContinueScore", GameControl.instance.score);
+			PlayerPrefs.SetInt("GameContinued", 1);
+		}
+		else
+		{
+			PlayerPrefs.SetInt("GameContinueScore", 0);
+			PlayerPrefs.SetInt("GameContinued", 0);
+		}
+
+
+
+		SceneManager.LoadScene("MainScene");
+	}
 
 }

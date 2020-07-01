@@ -69,7 +69,7 @@ public class Ball : MonoBehaviour
 
             if (transform.position.y < cam.transform.position.y - 0.5f * camHeight - 0.5f)
             {
-                GameControl.instance.PlayerDied();
+                GameControl.instance.PlayerSecondChance();
             }
 
             if (transform.position.x > 0.5f * camWidth)
@@ -128,7 +128,7 @@ public class Ball : MonoBehaviour
 
         if (col.gameObject.tag == "Cube Enemy")
         {
-            GameControl.instance.PlayerDied();
+            GameControl.instance.PlayerSecondChance();
         }
     }
 }
