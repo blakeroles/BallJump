@@ -22,6 +22,8 @@ public class MainMenu : MonoBehaviour
 
 		DeviceIDText.text = SystemInfo.deviceUniqueIdentifier;
 
+		Application.targetFrameRate = 60;
+
 
 
 	}
