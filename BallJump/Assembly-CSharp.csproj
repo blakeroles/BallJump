@@ -39,6 +39,7 @@
      <Compile Include="Assets\Scripts\AdBanner.cs" />
      <Compile Include="Assets\Scripts\Ball.cs" />
      <Compile Include="Assets\Scripts\CameraControl.cs" />
+     <Compile Include="Assets\Scripts\CircleEnemy.cs" />
      <Compile Include="Assets\Scripts\CubeEnemy.cs" />
      <Compile Include="Assets\Scripts\GameControl.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />

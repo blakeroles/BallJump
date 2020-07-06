@@ -133,5 +133,10 @@ public class Ball : MonoBehaviour
             GameControl.instance.PlayerHitBadPotion();
             Destroy(col.gameObject);
         }
+
+        if (col.gameObject.tag == "Circle Enemy")
+        {
+            GameControl.instance.PlayerSecondChance();
+        }
     }
 }

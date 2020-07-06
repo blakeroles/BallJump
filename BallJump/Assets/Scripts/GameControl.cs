@@ -27,6 +27,10 @@ public class GameControl : MonoBehaviour
 	public GameObject cubeEnemyPrefab;
 	public float minCubeEnemySpawnRate;
 	public float maxCubeEnemySpawnRate;
+	public GameObject circleEnemyPrefab;
+	public float minCircleEnemySpawnRate;
+	public float maxCircleEnemySpawnRate;
+	public int scoreToStartSpawningCircleEnemies;
 
 	public int score = 0;
 	public GameObject player;
@@ -34,6 +38,7 @@ public class GameControl : MonoBehaviour
 	private float timeSinceLastCoinSpawned;
 	private float timeSinceLastCubeEnemySpawned;
 	private float timeSinceLastBadPotionSpawned;
+	private float timeSinceLastCircleEnemySpawned;
 	private GameObject coin;
 	private GameObject badPotion;
 	private float height;
@@ -42,6 +47,8 @@ public class GameControl : MonoBehaviour
 	private GameObject cubeEnemy;
 	private float cubeEnemySpawnRate;
 	private float badPotionSpawnRate;
+	private GameObject circleEnemy;
+	private float circleEnemySpawnRate;
 
 
     // Start is called before the first frame update
@@ -87,6 +94,7 @@ public class GameControl : MonoBehaviour
 		coinSpawnRate = Random.Range(minCoinSpawnRate, maxCoinSpawnRate);
 		cubeEnemySpawnRate = Random.Range(minCubeEnemySpawnRate, maxCubeEnemySpawnRate);
 		badPotionSpawnRate = Random.Range(minBadPotionSpawnRate, maxBadPotionSpawnRate);
+		circleEnemySpawnRate = Random.Range(minCircleEnemySpawnRate, maxCircleEnemySpawnRate);
 
 		List<string> deviceIds = new List<string>();
 		deviceIds.Add("ee4ec563d1de0b1daa96d57376b9bbc6");
@@ -103,6 +111,8 @@ public class GameControl : MonoBehaviour
 		timeSinceLastCoinSpawned += Time.deltaTime;
 		timeSinceLastCubeEnemySpawned += Time.deltaTime;
 		timeSinceLastBadPotionSpawned += Time.deltaTime;
+		timeSinceLastCircleEnemySpawned += Time.deltaTime;
+
 		if (!gameOver && timeSinceLastCoinSpawned >= coinSpawnRate)
         {
 			timeSinceLastCoinSpawned = 0;
@@ -127,6 +137,14 @@ public class GameControl : MonoBehaviour
 			SpawnBadPotion();
 		}
 
+		if (!gameOver && score > scoreToStartSpawningCircleEnemies && timeSinceLastCircleEnemySpawned >= circleEnemySpawnRate)
+		{
+			timeSinceLastCircleEnemySpawned = 0;
+			circleEnemySpawnRate = Random.Range(minCircleEnemySpawnRate, maxCircleEnemySpawnRate);
+			Destroy(circleEnemy);
+			SpawnCircleEnemy();
+		}
+
     }
 
 	public void SpawnCoin()
@@ -137,6 +155,11 @@ public class GameControl : MonoBehaviour
 	public void SpawnCubeEnemy()
 	{
 		cubeEnemy = (GameObject) Instantiate(cubeEnemyPrefab, new Vector2(Random.Range(screenMin, screenMax), Random.Range(player.transform.position.y + height, player.transform.position.y + 2f * height)), Quaternion.identity);
+	}
+
+	public void SpawnCircleEnemy()
+	{
+		circleEnemy = (GameObject) Instantiate(circleEnemyPrefab, new Vector2(Random.Range(screenMin, screenMax), Random.Range(player.transform.position.y + height, player.transform.position.y + 2f * height)), Quaternion.identity);
 	}
 
 	public void SpawnBadPotion()

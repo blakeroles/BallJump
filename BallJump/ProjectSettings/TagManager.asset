@@ -8,6 +8,7 @@ TagManager:
   - Coin
   - Cube Enemy
   - BadPotion
+  - Circle Enemy
   layers:
   - Default
   - TransparentFX

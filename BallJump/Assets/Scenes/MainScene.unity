@@ -2847,6 +2847,11 @@ MonoBehaviour:
     type: 3}
   minCubeEnemySpawnRate: 10
   maxCubeEnemySpawnRate: 30
+  circleEnemyPrefab: {fileID: 287917287451268473, guid: e87020c4006ed44c88b86601d4744c65,
+    type: 3}
+  minCircleEnemySpawnRate: 10
+  maxCircleEnemySpawnRate: 30
+  scoreToStartSpawningCircleEnemies: 100
   score: 0
   player: {fileID: 629376049}
 --- !u!4 &1413069019
