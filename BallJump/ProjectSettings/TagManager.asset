@@ -7,6 +7,7 @@ TagManager:
   - Platform
   - Coin
   - Cube Enemy
+  - BadPotion
   layers:
   - Default
   - TransparentFX

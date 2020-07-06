@@ -127,5 +127,11 @@ public class Ball : MonoBehaviour
         {
             GameControl.instance.PlayerSecondChance();
         }
+
+        if (col.gameObject.tag == "BadPotion")
+        {
+            GameControl.instance.PlayerHitBadPotion();
+            Destroy(col.gameObject);
+        }
     }
 }

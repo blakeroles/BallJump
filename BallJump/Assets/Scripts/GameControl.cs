@@ -17,9 +17,13 @@ public class GameControl : MonoBehaviour
 	public float screenMin;
 	public float screenMax;
 	public GameObject coinPrefab;
+	public GameObject badPotionPrefab;
 	public float minCoinSpawnRate;
 	public float maxCoinSpawnRate;
+	public float minBadPotionSpawnRate;
+	public float maxBadPotionSpawnRate;
 	public int coinScoreIncrease;
+	public int badPotionScoreDecrease;
 	public GameObject cubeEnemyPrefab;
 	public float minCubeEnemySpawnRate;
 	public float maxCubeEnemySpawnRate;
@@ -29,12 +33,15 @@ public class GameControl : MonoBehaviour
 	private int highScore;
 	private float timeSinceLastCoinSpawned;
 	private float timeSinceLastCubeEnemySpawned;
+	private float timeSinceLastBadPotionSpawned;
 	private GameObject coin;
+	private GameObject badPotion;
 	private float height;
 	private float width;
 	private float coinSpawnRate;
 	private GameObject cubeEnemy;
 	private float cubeEnemySpawnRate;
+	private float badPotionSpawnRate;
 
 
     // Start is called before the first frame update
@@ -79,6 +86,7 @@ public class GameControl : MonoBehaviour
 
 		coinSpawnRate = Random.Range(minCoinSpawnRate, maxCoinSpawnRate);
 		cubeEnemySpawnRate = Random.Range(minCubeEnemySpawnRate, maxCubeEnemySpawnRate);
+		badPotionSpawnRate = Random.Range(minBadPotionSpawnRate, maxBadPotionSpawnRate);
 
 		List<string> deviceIds = new List<string>();
 		deviceIds.Add("ee4ec563d1de0b1daa96d57376b9bbc6");
@@ -94,7 +102,8 @@ public class GameControl : MonoBehaviour
     {
 		timeSinceLastCoinSpawned += Time.deltaTime;
 		timeSinceLastCubeEnemySpawned += Time.deltaTime;
-		if (GameControl.instance.gameOver == false && timeSinceLastCoinSpawned >= coinSpawnRate)
+		timeSinceLastBadPotionSpawned += Time.deltaTime;
+		if (!gameOver && timeSinceLastCoinSpawned >= coinSpawnRate)
         {
 			timeSinceLastCoinSpawned = 0;
 			coinSpawnRate = Random.Range(minCoinSpawnRate, maxCoinSpawnRate);
@@ -102,12 +111,20 @@ public class GameControl : MonoBehaviour
 			SpawnCoin();
         }
 
-		if (GameControl.instance.gameOver == false && timeSinceLastCubeEnemySpawned >= cubeEnemySpawnRate)
+		if (!gameOver && timeSinceLastCubeEnemySpawned >= cubeEnemySpawnRate)
 		{
 			timeSinceLastCubeEnemySpawned = 0;
 			cubeEnemySpawnRate = Random.Range(minCubeEnemySpawnRate, maxCubeEnemySpawnRate);
 			Destroy(cubeEnemy);
 			SpawnCubeEnemy();
+		}
+
+		if (!gameOver && timeSinceLastBadPotionSpawned >= badPotionSpawnRate)
+		{
+			timeSinceLastBadPotionSpawned = 0;
+			badPotionSpawnRate = Random.Range(minBadPotionSpawnRate, maxBadPotionSpawnRate);
+			Destroy(badPotion);
+			SpawnBadPotion();
 		}
 
     }
@@ -120,6 +137,11 @@ public class GameControl : MonoBehaviour
 	public void SpawnCubeEnemy()
 	{
 		cubeEnemy = (GameObject) Instantiate(cubeEnemyPrefab, new Vector2(Random.Range(screenMin, screenMax), Random.Range(player.transform.position.y + height, player.transform.position.y + 2f * height)), Quaternion.identity);
+	}
+
+	public void SpawnBadPotion()
+	{
+		badPotion = (GameObject) Instantiate(badPotionPrefab, new Vector2(Random.Range(screenMin, screenMax), Random.Range(player.transform.position.y + height, player.transform.position.y + 2f * height)), Quaternion.identity);
 	}
 
 	public void PlayerHitCoin()
@@ -135,6 +157,19 @@ public class GameControl : MonoBehaviour
 		scoreText.text = "SCORE: " + score.ToString();
 
 		UpdateHighScore();
+	}
+
+	public void PlayerHitBadPotion()
+	{
+		if (gameOver)
+		{
+			return;
+		}
+
+		SoundManagerScript.PlaySound("poison");
+
+		score -= badPotionScoreDecrease;
+		scoreText.text = "SCORE: " + score.ToString();
 	}
 
 	public void PlayerSecondChance()

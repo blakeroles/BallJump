@@ -9,6 +9,7 @@ public class SoundManagerScript : MonoBehaviour
 	public static AudioClip gameOverSound;
 	public static AudioClip tapSound;
 	public static AudioClip coinSound;
+	public static AudioClip poisonSound;
 
 	static AudioSource audioSrc;
 
@@ -19,6 +20,7 @@ public class SoundManagerScript : MonoBehaviour
         gameOverSound = Resources.Load<AudioClip>("game_over");
         tapSound = Resources.Load<AudioClip>("tap");
 		coinSound = Resources.Load<AudioClip>("coin_chime");
+		poisonSound = Resources.Load<AudioClip>("poison");
 
         audioSrc = GetComponent<AudioSource>();
     }
@@ -46,6 +48,9 @@ public class SoundManagerScript : MonoBehaviour
 					break;
 				case "coin_chime":
 					audioSrc.PlayOneShot(coinSound);
+					break;
+				case "poison":
+					audioSrc.PlayOneShot(poisonSound);
 					break;
 			}
 		}

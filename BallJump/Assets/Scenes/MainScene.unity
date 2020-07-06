@@ -1700,7 +1700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -134.3999, y: -102.3999}
+  m_AnchoredPosition: {x: -134.40039, y: -102.40039}
   m_SizeDelta: {x: 218.6, y: 72.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1074432340
@@ -2638,7 +2638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 55.5, y: -99.6001}
+  m_AnchoredPosition: {x: 55.5, y: -99.59961}
   m_SizeDelta: {x: 65.68, y: 26.477337}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1405925240
@@ -2867,9 +2867,14 @@ MonoBehaviour:
   screenMax: 0
   coinPrefab: {fileID: 2366158916843149061, guid: faae7627bfb47435a9d0890bdb61b0fe,
     type: 3}
+  badPotionPrefab: {fileID: 569635337565658828, guid: 44a2886a09afb4841bf44402222fc7a5,
+    type: 3}
   minCoinSpawnRate: 10
   maxCoinSpawnRate: 30
+  minBadPotionSpawnRate: 10
+  maxBadPotionSpawnRate: 30
   coinScoreIncrease: 10
+  badPotionScoreDecrease: 10
   cubeEnemyPrefab: {fileID: 6125575783013847858, guid: c47dee81a69a7414bb37a3deeabd4cac,
     type: 3}
   minCubeEnemySpawnRate: 10
