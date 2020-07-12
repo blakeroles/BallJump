@@ -13,6 +13,8 @@ public class Ball : MonoBehaviour
     private List<float> hitPlatformYs = new List<float>();
     private float camHeight;
     private float camWidth;
+    private Animator myAnimator;
+    private bool facingRight;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,9 @@ public class Ball : MonoBehaviour
         Camera camSize = Camera.main;
         camHeight = 2f * camSize.orthographicSize;
         camWidth = camHeight * camSize.aspect;
+
+        myAnimator = GetComponent<Animator>();
+        facingRight = true;
     }
 
     // Update is called once per frame
@@ -31,13 +36,16 @@ public class Ball : MonoBehaviour
 
         	GetComponent<Rigidbody2D>().AddForce(Vector2.right * h);
 
+            #if UNITY_EDITOR
+                ComputerFlip(h);
+                myAnimator.SetFloat("speed", Mathf.Abs(h));
+            #endif
+
             #if UNITY_ANDROID
                 
                 if (Input.touchCount > 0)
                 {
-
                     Touch touch = Input.GetTouch(0);
-
                     if (touch.position.x < Screen.width/2)
                     {
                         GetComponent<Rigidbody2D>().AddForce(new Vector2(-xMobileTapForce, 0));
@@ -46,16 +54,21 @@ public class Ball : MonoBehaviour
                     {
                         GetComponent<Rigidbody2D>().AddForce(new Vector2(xMobileTapForce, 0));
                     }
+                    TouchFlip(touch.position.x);
+                    myAnimator.SetFloat("speed", Mathf.Abs(touch.position.x));
+                }
+                else
+                {
+                    myAnimator.SetFloat("speed", 0f);
                 }
             #endif
+                
 
             #if UNITY_IPHONE
                 
                 if (Input.touchCount > 0)
                 {
-
                     Touch touch = Input.GetTouch(0);
-
                     if (touch.position.x < Screen.width/2)
                     {
                         GetComponent<Rigidbody2D>().AddForce(new Vector2(-xMobileTapForce, 0));
@@ -64,8 +77,18 @@ public class Ball : MonoBehaviour
                     {
                         GetComponent<Rigidbody2D>().AddForce(new Vector2(xMobileTapForce, 0));
                     }
+                    TouchFlip(touch.position.x);
+                    myAnimator.SetFloat("speed", Mathf.Abs(touch.position.x));
                 }
+                else
+                {
+                    myAnimator.SetFloat("speed", 0f);
+                }
+                
+            
             #endif
+
+            
 
             if (transform.position.y < cam.transform.position.y - 0.5f * camHeight - 0.5f)
             {
@@ -84,6 +107,34 @@ public class Ball : MonoBehaviour
 
     	}
 
+    }
+
+    private void TouchFlip(float touchValue)
+    {
+        if (touchValue > Screen.width/2 && !facingRight || touchValue < Screen.width/2 && facingRight)
+        {
+            facingRight = !facingRight;
+
+            Vector3 theScale = transform.localScale;
+
+            theScale.x *= -1;
+
+            transform.localScale = theScale;
+        }
+    }
+
+    private void ComputerFlip(float horizontal)
+    {
+        if (horizontal > 0f && !facingRight || horizontal < 0f && facingRight)
+        {
+            facingRight = !facingRight;
+            
+            Vector3 theScale = transform.localScale;
+
+            theScale.x *= -1;
+
+            transform.localScale = theScale;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
