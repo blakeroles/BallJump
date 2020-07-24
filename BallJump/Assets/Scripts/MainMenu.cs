@@ -36,6 +36,12 @@ public class MainMenu : MonoBehaviour
 		SceneManager.LoadScene("MainScene");
 	}
 
+	public void OpenUnlocksPage()
+	{
+		SoundManagerScript.PlaySound("tap");
+		Debug.Log("Tapped");
+	}
+
 
 
 

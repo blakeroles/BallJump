@@ -116,6 +116,7 @@ public class GameControl : MonoBehaviour
 
 		List<string> deviceIds = new List<string>();
 		deviceIds.Add("ee4ec563d1de0b1daa96d57376b9bbc6");
+		deviceIds.Add("23baaa41c248b5765cc77f732a706877");
 		RequestConfiguration requestConfiguration = new RequestConfiguration.Builder().SetTestDeviceIds(deviceIds).build();
 		MobileAds.SetRequestConfiguration(requestConfiguration);
 
