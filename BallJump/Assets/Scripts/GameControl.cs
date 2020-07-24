@@ -175,7 +175,6 @@ public class GameControl : MonoBehaviour
 			SpawnCircleEnemy();
 		}
 
-		Debug.Log(hearts.Count.ToString());
 
 		UpdateHeartPositions();
 
