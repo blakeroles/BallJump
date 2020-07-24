@@ -9,6 +9,8 @@ TagManager:
   - Cube Enemy
   - BadPotion
   - Circle Enemy
+  - Heart
+  - guiHeart
   layers:
   - Default
   - TransparentFX

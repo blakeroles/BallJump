@@ -2850,16 +2850,21 @@ MonoBehaviour:
   scoreText: {fileID: 1405925241}
   gameOver: 0
   gameContinued: 0
+  maxNumberOfHearts: 0
   screenMin: 0
   screenMax: 0
   coinPrefab: {fileID: 2366158916843149061, guid: faae7627bfb47435a9d0890bdb61b0fe,
     type: 3}
   badPotionPrefab: {fileID: 569635337565658828, guid: 44a2886a09afb4841bf44402222fc7a5,
     type: 3}
+  heartPrefab: {fileID: 4858363774914555857, guid: 894f75f5322474714ad741fab593242c,
+    type: 3}
   minCoinSpawnRate: 10
   maxCoinSpawnRate: 30
   minBadPotionSpawnRate: 10
   maxBadPotionSpawnRate: 30
+  minHeartSpawnRate: 10
+  maxHeartSpawnRate: 30
   coinScoreIncrease: 10
   badPotionScoreDecrease: 10
   cubeEnemyPrefab: {fileID: 6125575783013847858, guid: c47dee81a69a7414bb37a3deeabd4cac,
@@ -2871,8 +2876,11 @@ MonoBehaviour:
   minCircleEnemySpawnRate: 10
   maxCircleEnemySpawnRate: 30
   scoreToStartSpawningCircleEnemies: 100
+  hearts: []
   score: 0
   player: {fileID: 629376049}
+  heartXOffset: 0.5
+  heartYOffset: 0.5
 --- !u!4 &1413069019
 Transform:
   m_ObjectHideFlags: 0

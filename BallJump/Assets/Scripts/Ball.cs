@@ -127,6 +127,7 @@ public class Ball : MonoBehaviour
     {
         if (horizontal > 0f && !facingRight || horizontal < 0f && facingRight)
         {
+            
             facingRight = !facingRight;
             
             Vector3 theScale = transform.localScale;
@@ -176,7 +177,15 @@ public class Ball : MonoBehaviour
 
         if (col.gameObject.tag == "Cube Enemy")
         {
-            GameControl.instance.PlayerSecondChance();
+            if (GameControl.instance.hearts.Count > 0)
+            {
+                GameControl.instance.DeductHeart();
+                Destroy(col.gameObject);
+            } else 
+            {
+                GameControl.instance.PlayerSecondChance();
+            }
+            
         }
 
         if (col.gameObject.tag == "BadPotion")
@@ -187,7 +196,21 @@ public class Ball : MonoBehaviour
 
         if (col.gameObject.tag == "Circle Enemy")
         {
-            GameControl.instance.PlayerSecondChance();
+            if (GameControl.instance.hearts.Count > 0)
+            {
+                GameControl.instance.DeductHeart();
+                Destroy(col.gameObject);
+            } else
+            {
+                GameControl.instance.PlayerSecondChance();
+            }
+            
+        }
+
+        if (col.gameObject.tag == "Heart")
+        {
+            GameControl.instance.PlayerHitHeart();
+            Destroy(col.gameObject);
         }
     }
 }

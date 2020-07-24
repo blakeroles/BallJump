@@ -14,14 +14,18 @@ public class GameControl : MonoBehaviour
 	public Text scoreText;
 	public bool gameOver = false;
 	public bool gameContinued = false;
+	public int maxNumberOfHearts;
 	public float screenMin;
 	public float screenMax;
 	public GameObject coinPrefab;
 	public GameObject badPotionPrefab;
+	public GameObject heartPrefab;
 	public float minCoinSpawnRate;
 	public float maxCoinSpawnRate;
 	public float minBadPotionSpawnRate;
 	public float maxBadPotionSpawnRate;
+	public float minHeartSpawnRate;
+	public float maxHeartSpawnRate;
 	public int coinScoreIncrease;
 	public int badPotionScoreDecrease;
 	public GameObject cubeEnemyPrefab;
@@ -31,16 +35,21 @@ public class GameControl : MonoBehaviour
 	public float minCircleEnemySpawnRate;
 	public float maxCircleEnemySpawnRate;
 	public int scoreToStartSpawningCircleEnemies;
+	public List<GameObject> hearts;
 
 	public int score = 0;
 	public GameObject player;
+	public float heartXOffset;
+	public float heartYOffset;
 	private int highScore;
 	private float timeSinceLastCoinSpawned;
 	private float timeSinceLastCubeEnemySpawned;
 	private float timeSinceLastBadPotionSpawned;
 	private float timeSinceLastCircleEnemySpawned;
+	private float timeSinceLastHeartSpawned;
 	private GameObject coin;
 	private GameObject badPotion;
+	private GameObject heart;
 	private float height;
 	private float width;
 	private float coinSpawnRate;
@@ -49,6 +58,11 @@ public class GameControl : MonoBehaviour
 	private float badPotionSpawnRate;
 	private GameObject circleEnemy;
 	private float circleEnemySpawnRate;
+	private float heartSpawnRate;
+	
+	private float heightMin;
+	private float heightMax;
+	private Camera cam;
 
 
     // Start is called before the first frame update
@@ -84,17 +98,21 @@ public class GameControl : MonoBehaviour
 			}
 		}
 
-    	Camera cam = Camera.main;
+    	cam = Camera.main;
         height = 2f * cam.orthographicSize;
         width = height * cam.aspect;
 
         screenMin = -1f * width / 2;
         screenMax = 1f * width / 2;
 
+		heightMin = -1f * height / 2;
+		heightMax = 1f * height / 2;
+
 		coinSpawnRate = Random.Range(minCoinSpawnRate, maxCoinSpawnRate);
 		cubeEnemySpawnRate = Random.Range(minCubeEnemySpawnRate, maxCubeEnemySpawnRate);
 		badPotionSpawnRate = Random.Range(minBadPotionSpawnRate, maxBadPotionSpawnRate);
 		circleEnemySpawnRate = Random.Range(minCircleEnemySpawnRate, maxCircleEnemySpawnRate);
+		heartSpawnRate = Random.Range(minHeartSpawnRate, maxHeartSpawnRate);
 
 		List<string> deviceIds = new List<string>();
 		deviceIds.Add("ee4ec563d1de0b1daa96d57376b9bbc6");
@@ -102,6 +120,8 @@ public class GameControl : MonoBehaviour
 		MobileAds.SetRequestConfiguration(requestConfiguration);
 
 		Time.timeScale = 1f;
+
+		hearts = new List<GameObject>();
 
     }
 
@@ -112,6 +132,7 @@ public class GameControl : MonoBehaviour
 		timeSinceLastCubeEnemySpawned += Time.deltaTime;
 		timeSinceLastBadPotionSpawned += Time.deltaTime;
 		timeSinceLastCircleEnemySpawned += Time.deltaTime;
+		timeSinceLastHeartSpawned += Time.deltaTime;
 
 		if (!gameOver && timeSinceLastCoinSpawned >= coinSpawnRate)
         {
@@ -137,6 +158,14 @@ public class GameControl : MonoBehaviour
 			SpawnBadPotion();
 		}
 
+		if (!gameOver && timeSinceLastHeartSpawned >= heartSpawnRate)
+		{
+			timeSinceLastHeartSpawned = 0;
+			heartSpawnRate = Random.Range(minHeartSpawnRate, maxHeartSpawnRate);
+			Destroy(heart);
+			SpawnHeart();
+		}
+
 		if (!gameOver && score > scoreToStartSpawningCircleEnemies && timeSinceLastCircleEnemySpawned >= circleEnemySpawnRate)
 		{
 			timeSinceLastCircleEnemySpawned = 0;
@@ -145,11 +174,28 @@ public class GameControl : MonoBehaviour
 			SpawnCircleEnemy();
 		}
 
+		Debug.Log(hearts.Count.ToString());
+
+		UpdateHeartPositions();
+
     }
+
+	public void UpdateHeartPositions()
+	{
+		foreach (GameObject heart in hearts)
+		{
+			heart.transform.position = new Vector3(heart.transform.position.x, cam.transform.position.y - heightMax + heartYOffset, heart.transform.position.z);
+		}
+	}
 
 	public void SpawnCoin()
 	{
 		coin = (GameObject) Instantiate(coinPrefab, new Vector2(Random.Range(screenMin, screenMax), Random.Range(player.transform.position.y + height, player.transform.position.y + 2f * height)), Quaternion.identity);
+	}
+
+	public void SpawnHeart()
+	{
+		heart = (GameObject) Instantiate(heartPrefab, new Vector2(Random.Range(screenMin, screenMax), Random.Range(player.transform.position.y + height, player.transform.position.y + 2f * height)), Quaternion.identity);
 	}
 
 	public void SpawnCubeEnemy()
@@ -195,9 +241,37 @@ public class GameControl : MonoBehaviour
 		scoreText.text = "SCORE: " + score.ToString();
 	}
 
+	public void PlayerHitHeart()
+	{
+		if (gameOver)
+		{
+			return;
+		}
+
+		SoundManagerScript.PlaySound("heart_pickup");
+
+		if (hearts.Count < 3)
+		{
+			GameObject newHeart = (GameObject) Instantiate(heartPrefab, new Vector2((screenMin + (0.8f*(hearts.Count) + heartXOffset)), cam.transform.position.y - heightMax + heartYOffset), Quaternion.identity);
+			newHeart.tag = "guiHeart";
+			hearts.Add(newHeart);
+		}
+
+	}
+
+	public void DeductHeart()
+	{
+		SoundManagerScript.PlaySound("player_hit");
+		Destroy(hearts[hearts.Count - 1]);
+		hearts.RemoveAt(hearts.Count - 1);
+	}
+
 	public void PlayerSecondChance()
 	{
-    	SoundManagerScript.PlaySound("game_over");
+    	
+		
+		
+		SoundManagerScript.PlaySound("game_over");
 
 		secondChanceCanvas.SetActive(true);
 

@@ -10,6 +10,8 @@ public class SoundManagerScript : MonoBehaviour
 	public static AudioClip tapSound;
 	public static AudioClip coinSound;
 	public static AudioClip poisonSound;
+	public static AudioClip heartPickupSound;
+	public static AudioClip playerHitSound;
 
 	static AudioSource audioSrc;
 
@@ -21,6 +23,8 @@ public class SoundManagerScript : MonoBehaviour
         tapSound = Resources.Load<AudioClip>("tap");
 		coinSound = Resources.Load<AudioClip>("coin_chime");
 		poisonSound = Resources.Load<AudioClip>("poison");
+		heartPickupSound = Resources.Load<AudioClip>("heart_pickup");
+		playerHitSound = Resources.Load<AudioClip>("player_hit");
 
         audioSrc = GetComponent<AudioSource>();
     }
@@ -51,6 +55,12 @@ public class SoundManagerScript : MonoBehaviour
 					break;
 				case "poison":
 					audioSrc.PlayOneShot(poisonSound);
+					break;
+				case "heart_pickup":
+					audioSrc.PlayOneShot(heartPickupSound);
+					break;
+				case "player_hit":
+					audioSrc.PlayOneShot(playerHitSound);
 					break;
 			}
 		}
