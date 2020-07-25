@@ -24,7 +24,11 @@ public class CameraControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		target = GameControl.instance.player.transform;
+		if (trackingTarget)
+		{
+			target = GameControl.instance.player.transform;
+		}
+		
         lastYPosition = 0;
         scaleBackgroundImageFitScreenSize();
     }
