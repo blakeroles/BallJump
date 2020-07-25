@@ -35,6 +35,7 @@ public class GameControl : MonoBehaviour
 	public int coinScoreIncrease;
 	public int badPotionScoreDecrease;
 	public GameObject cubeEnemyPrefab;
+	public GameObject whiteHeartPrefab;
 	public float minCubeEnemySpawnRate;
 	public float maxCubeEnemySpawnRate;
 	public GameObject circleEnemyPrefab;
@@ -42,6 +43,7 @@ public class GameControl : MonoBehaviour
 	public float maxCircleEnemySpawnRate;
 	public int scoreToStartSpawningCircleEnemies;
 	public List<GameObject> hearts;
+	public List<GameObject> whiteHearts;
 
 	public int score = 0;
 	public float heartXOffset;
@@ -158,6 +160,13 @@ public class GameControl : MonoBehaviour
 		Time.timeScale = 1f;
 
 		hearts = new List<GameObject>();
+		whiteHearts = new List<GameObject>();
+
+		for (int i = 0; i < 3; i++)
+		{
+			whiteHearts.Add((GameObject) Instantiate(whiteHeartPrefab, new Vector2((screenMin + (0.8f*i + heartXOffset)), cam.transform.position.y - heightMax + heartYOffset), Quaternion.identity));
+		}
+		
 
     }
 
@@ -212,6 +221,7 @@ public class GameControl : MonoBehaviour
 
 
 		UpdateHeartPositions();
+		UpdateWhiteHeartPositions();
 
     }
 
@@ -220,6 +230,14 @@ public class GameControl : MonoBehaviour
 		foreach (GameObject heart in hearts)
 		{
 			heart.transform.position = new Vector3(heart.transform.position.x, cam.transform.position.y - heightMax + heartYOffset, heart.transform.position.z);
+		}
+	}
+
+	public void UpdateWhiteHeartPositions()
+	{
+		foreach (GameObject whiteHeart in whiteHearts)
+		{
+			whiteHeart.transform.position = new Vector3(whiteHeart.transform.position.x, cam.transform.position.y - heightMax + heartYOffset, whiteHeart.transform.position.z);
 		}
 	}
 

@@ -2711,6 +2711,8 @@ MonoBehaviour:
   badPotionScoreDecrease: 10
   cubeEnemyPrefab: {fileID: 6125575783013847858, guid: c47dee81a69a7414bb37a3deeabd4cac,
     type: 3}
+  whiteHeartPrefab: {fileID: 1115118449639849153, guid: c1dfedc39edab4b8bb039d003fed8a44,
+    type: 3}
   minCubeEnemySpawnRate: 10
   maxCubeEnemySpawnRate: 30
   circleEnemyPrefab: {fileID: 287917287451268473, guid: e87020c4006ed44c88b86601d4744c65,
@@ -2719,6 +2721,7 @@ MonoBehaviour:
   maxCircleEnemySpawnRate: 30
   scoreToStartSpawningCircleEnemies: 100
   hearts: []
+  whiteHearts: []
   score: 0
   heartXOffset: 0.5
   heartYOffset: 0.5
