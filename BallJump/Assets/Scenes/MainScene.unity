@@ -2682,6 +2682,12 @@ MonoBehaviour:
   defaultPlayerPrefab: {fileID: 2352959291882128317, guid: eee514578a0d64c759cbf9a29c475fd6,
     type: 3}
   player: {fileID: 0}
+  unlock1PlayerPrefab: {fileID: 2352959291882128317, guid: 68bc4383ad80d4a81889b1c91b88e66e,
+    type: 3}
+  unlock2PlayerPrefab: {fileID: 2352959291882128317, guid: 2d50e4be21c7f42e4b176f4a4ff109aa,
+    type: 3}
+  unlock3PlayerPrefab: {fileID: 2352959291882128317, guid: 376060f9182c047f2b7ff444c95373f7,
+    type: 3}
   continueButton: {fileID: 162646691}
   scoreText: {fileID: 1405925241}
   gameOver: 0

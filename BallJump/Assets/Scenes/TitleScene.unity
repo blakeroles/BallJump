@@ -3076,6 +3076,10 @@ MonoBehaviour:
   unlock2Text: {fileID: 0}
   unlock3Text: {fileID: 0}
   rectangleUnlockPrefab: {fileID: 0}
+  DEFAULT_PLAYER_NO: 0
+  UNLOCK_1_PLAYER_NO: 1
+  UNLOCK_2_PLAYER_NO: 2
+  UNLOCK_3_PLAYER_NO: 3
 --- !u!1 &1248176167
 GameObject:
   m_ObjectHideFlags: 0
@@ -3690,7 +3694,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e1484502b6a46b9a31211dd2e5e55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   backgroundImage1: {fileID: 514011264}
   gatesImage1: {fileID: 1080968777}
   rocksImage1: {fileID: 71197017}
@@ -3849,6 +3852,10 @@ MonoBehaviour:
   unlock3Text: {fileID: 1588536251}
   rectangleUnlockPrefab: {fileID: 9015633632884857327, guid: 917d5f5f4089b4262988253cd6a1f2bb,
     type: 3}
+  DEFAULT_PLAYER_NO: 0
+  UNLOCK_1_PLAYER_NO: 1
+  UNLOCK_2_PLAYER_NO: 2
+  UNLOCK_3_PLAYER_NO: 3
 --- !u!1 &1774938931
 GameObject:
   m_ObjectHideFlags: 0

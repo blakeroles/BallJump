@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0f10fa70b47f84596813c8058fb1dbd4, type: 2}
+  m_Motion: {fileID: 7400000, guid: c68b1427e101b4cc2a96e17099cc7a6e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -58,7 +58,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerController
+  m_Name: Unlock3PlayerController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: speed
@@ -101,7 +101,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f2b27af6d3675478581d9e74dfa0d82a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2b715bb9089534e78ac3f8db26e26122, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

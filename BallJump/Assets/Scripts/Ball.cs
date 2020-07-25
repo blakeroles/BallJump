@@ -41,6 +41,7 @@ public class Ball : MonoBehaviour
 
             #if UNITY_EDITOR
                 ComputerFlip(h);
+                Debug.Log(Mathf.Abs(h).ToString());
                 myAnimator.SetFloat("speed", Mathf.Abs(h));
             #endif
 
@@ -95,7 +96,6 @@ public class Ball : MonoBehaviour
 
             if (transform.position.y < GameControl.instance.mainCam.transform.position.y - 0.5f * camHeight - 0.5f)
             {
-                Debug.Log("got here");
                 GameControl.instance.PlayerSecondChance();
             }
 

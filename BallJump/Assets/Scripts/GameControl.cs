@@ -104,6 +104,10 @@ public class GameControl : MonoBehaviour
 			
 			
         }
+		else
+		{
+			player = (GameObject) Instantiate(defaultPlayerPrefab, new Vector2(0.0f, 0.0f), Quaternion.identity);
+		}
 		
 
 		
