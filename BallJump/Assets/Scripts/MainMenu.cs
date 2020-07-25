@@ -88,6 +88,7 @@ public class MainMenu : MonoBehaviour
 				switch (hit.collider.gameObject.name)
 				{
 					case "DefaultPlayer":
+						SoundManagerScript.PlaySound("tap");
 						unlockRectangle.transform.position = new Vector2(DEFAULT_RECT_X_POS, DEFAULT_RECT_Y_POS);
 						PlayerPrefs.SetInt("CurrentPlayer", DEFAULT_PLAYER_NO);
 						break;
@@ -96,6 +97,7 @@ public class MainMenu : MonoBehaviour
 						{
 							if (PlayerPrefs.GetInt("HighScore") > UNLOCK_1_SCORE)
 							{
+								SoundManagerScript.PlaySound("tap");
 								unlockRectangle.transform.position = new Vector2(UNLOCK_1_RECT_X_POS, UNLOCK_1_RECT_Y_POS);
 								PlayerPrefs.SetInt("CurrentPlayer", UNLOCK_1_PLAYER_NO);
 							}
@@ -106,6 +108,7 @@ public class MainMenu : MonoBehaviour
 						{
 							if (PlayerPrefs.GetInt("HighScore") > UNLOCK_2_SCORE)
 							{
+								SoundManagerScript.PlaySound("tap");
 								unlockRectangle.transform.position = new Vector2(UNLOCK_2_RECT_X_POS, UNLOCK_2_RECT_Y_POS);
 								PlayerPrefs.SetInt("CurrentPlayer", UNLOCK_2_PLAYER_NO);
 							}
@@ -116,6 +119,7 @@ public class MainMenu : MonoBehaviour
 						{
 							if (PlayerPrefs.GetInt("HighScore") > UNLOCK_3_SCORE)
 							{
+								SoundManagerScript.PlaySound("tap");
 								unlockRectangle.transform.position = new Vector2(UNLOCK_3_RECT_X_POS, UNLOCK_3_RECT_Y_POS);
 								PlayerPrefs.SetInt("CurrentPlayer", UNLOCK_3_PLAYER_NO);
 							}
