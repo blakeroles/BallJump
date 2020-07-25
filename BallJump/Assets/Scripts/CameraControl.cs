@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
 
-	public Transform target;
+	private Transform target;
 	public GameObject backgroundImage1 = null;
 	public GameObject gatesImage1 = null;
 	public GameObject rocksImage1 = null;
@@ -24,6 +24,7 @@ public class CameraControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		target = GameControl.instance.player.transform;
         lastYPosition = 0;
         scaleBackgroundImageFitScreenSize();
     }

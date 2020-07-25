@@ -9,7 +9,13 @@ public class GameControl : MonoBehaviour
 {
 
 	public static GameControl instance;
+	public GameObject mainCam;
 	public GameObject secondChanceCanvas;
+	public GameObject defaultPlayerPrefab;
+	public GameObject player;
+	public GameObject unlock1PlayerPrefab;
+	public GameObject unlock2PlayerPrefab;
+	public GameObject unlock3PlayerPrefab;
 	public GameObject continueButton;
 	public Text scoreText;
 	public bool gameOver = false;
@@ -38,7 +44,6 @@ public class GameControl : MonoBehaviour
 	public List<GameObject> hearts;
 
 	public int score = 0;
-	public GameObject player;
 	public float heartXOffset;
 	public float heartYOffset;
 	private int highScore;
@@ -77,11 +82,37 @@ public class GameControl : MonoBehaviour
         	Destroy(gameObject);
         }
 
+		// Set the correct player sprite based on current player
+        if (PlayerPrefs.HasKey("CurrentPlayer"))
+        {
+			if (PlayerPrefs.GetInt("CurrentPlayer") == MainMenu.instance.DEFAULT_PLAYER_NO)
+			{
+				player = (GameObject) Instantiate(defaultPlayerPrefab, new Vector2(0.0f, 0.0f), Quaternion.identity);
+			}
+			else if (PlayerPrefs.GetInt("CurrentPlayer") == MainMenu.instance.UNLOCK_1_PLAYER_NO)
+			{
+				player = (GameObject) Instantiate(unlock1PlayerPrefab, new Vector2(0.0f, 0.0f), Quaternion.identity);
+			}
+			else if (PlayerPrefs.GetInt("CurrentPlayer") == MainMenu.instance.UNLOCK_2_PLAYER_NO)
+			{
+				player = (GameObject) Instantiate(unlock2PlayerPrefab, new Vector2(0.0f, 0.0f), Quaternion.identity);
+			}
+			else if (PlayerPrefs.GetInt("CurrentPlayer") == MainMenu.instance.UNLOCK_3_PLAYER_NO)
+			{
+				player = (GameObject) Instantiate(unlock3PlayerPrefab, new Vector2(0.0f, 0.0f), Quaternion.identity);
+			}
+			
+			
+        }
+		
+
 		
     }
 
     void Start()
     {
+
+		
 
     	if (PlayerPrefs.HasKey("HighScore"))
     	{

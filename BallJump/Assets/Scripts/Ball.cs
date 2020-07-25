@@ -8,7 +8,6 @@ public class Ball : MonoBehaviour
 	public float moveSpeed;
     public float yForce;
     public float xMobileTapForce = 5f;
-    public GameObject cam;
 
     private List<float> hitPlatformYs = new List<float>();
     private float camHeight;
@@ -25,6 +24,10 @@ public class Ball : MonoBehaviour
 
         myAnimator = GetComponent<Animator>();
         facingRight = true;
+
+
+
+
     }
 
     // Update is called once per frame
@@ -90,8 +93,9 @@ public class Ball : MonoBehaviour
 
             
 
-            if (transform.position.y < cam.transform.position.y - 0.5f * camHeight - 0.5f)
+            if (transform.position.y < GameControl.instance.mainCam.transform.position.y - 0.5f * camHeight - 0.5f)
             {
+                Debug.Log("got here");
                 GameControl.instance.PlayerSecondChance();
             }
 
